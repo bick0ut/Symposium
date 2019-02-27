@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 1f;
+    public Animator walk;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +24,26 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.Translate(new Vector2(0, 2) * moveSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(0, 2) * moveSpeed * Time.deltaTime);
+            walk.enabled = true;
+        } else
+        {
+            walk.enabled = false;
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            transform.Translate(new Vector2(0, -2) * moveSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(0, -2) * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.Translate(new Vector2(-2, 0) * moveSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(-2, 0) * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(2, 0) * moveSpeed * Time.deltaTime);
         }
 
 
