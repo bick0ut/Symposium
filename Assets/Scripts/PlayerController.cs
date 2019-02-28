@@ -6,11 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 1f;
     public Animator walk;
+    private bool walking;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveSpeed = 2f;
     }
 
     // Update is called once per frame
@@ -24,28 +25,37 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.Translate(new Vector3(0, 2) * moveSpeed * Time.deltaTime);
+            transform.position += new Vector3(0, (moveSpeed * Time.deltaTime));
+            walking = true;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            transform.position += new Vector3(0, -(moveSpeed * Time.deltaTime));
+            walking = true;
+        }
+ 
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            transform.position += new Vector3(-(moveSpeed * Time.deltaTime), 0);
+            walking = true;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            transform.position += new Vector3((moveSpeed * Time.deltaTime), 0);
+            walking = true;
+        }
+
+        if (walking)
+        {
             walk.enabled = true;
         } else
         {
             walk.enabled = false;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(new Vector3(0, -2) * moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(new Vector3(-2, 0) * moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(new Vector3(2, 0) * moveSpeed * Time.deltaTime);
-        }
-
+        walking = false;
 
     }
 }
