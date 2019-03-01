@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public Animator walk;
     private bool walking;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
     {
         moveSpeed = 2f;
+        health = 10;
     }
 
     // Update is called once per frame
