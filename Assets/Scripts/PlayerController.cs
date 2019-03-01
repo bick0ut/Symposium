@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
     public Animator walk;
+    public GameObject gameObject;
+
     private bool walking;
+    private float moveSpeed;
     private int health;
+    private Collider[] c;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 2f;
+        moveSpeed = 3f;
         health = 10;
+        c = GetComponents<Collider>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Player was hit: " + collision.ToString());
     }
 
     // Update is called once per frame

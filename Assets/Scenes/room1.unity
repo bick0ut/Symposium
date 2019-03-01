@@ -2671,6 +2671,7 @@ GameObject:
   - component: {fileID: 1168175642}
   - component: {fileID: 1168175645}
   - component: {fileID: 1168175646}
+  - component: {fileID: 1168175647}
   m_Layer: 0
   m_Name: Enemy 1_0
   m_TagString: Untagged
@@ -2796,6 +2797,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1168175647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168175641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40175a94e945d3d40978ad7218950a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1555332649}
 --- !u!1 &1389396456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,9 +2870,12 @@ GameObject:
   - component: {fileID: 1555332652}
   - component: {fileID: 1555332651}
   - component: {fileID: 1555332653}
-  - component: {fileID: 1555332654}
   - component: {fileID: 1555332650}
   - component: {fileID: 1555332655}
+  - component: {fileID: 1555332656}
+  - component: {fileID: 1555332654}
+  - component: {fileID: 1555332658}
+  - component: {fileID: 1555332657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2878,8 +2895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e892b405d33c64e871a11362ac6674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
   walk: {fileID: 1555332653}
+  gameObject: {fileID: 0}
 --- !u!212 &1555332651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2961,8 +2978,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &1555332654
-CircleCollider2D:
+--- !u!68 &1555332654
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2975,8 +2992,10 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.05, y: -0.09}
+  - {x: 0.05, y: -0.09}
 --- !u!50 &1555332655
 Rigidbody2D:
   serializedVersion: 4
@@ -2998,6 +3017,60 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!68 &1555332656
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555332649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.05, y: 0.09}
+  - {x: 0.05, y: 0.09}
+--- !u!68 &1555332657
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555332649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.1, y: 0.04}
+  - {x: 0.1, y: -0.04}
+--- !u!68 &1555332658
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555332649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.1, y: 0.04}
+  - {x: -0.1, y: -0.04}
 --- !u!1 &1915029750
 GameObject:
   m_ObjectHideFlags: 0
