@@ -2672,6 +2672,7 @@ GameObject:
   - component: {fileID: 1168175645}
   - component: {fileID: 1168175646}
   - component: {fileID: 1168175647}
+  - component: {fileID: 1168175648}
   m_Layer: 0
   m_Name: Enemy 1_0
   m_TagString: Untagged
@@ -2795,7 +2796,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1168175647
 MonoBehaviour:
@@ -2810,6 +2811,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1555332649}
+--- !u!114 &1168175648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168175641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2cc4c1ef6b95149842f8c5dc019080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1389396456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,11 +2884,9 @@ GameObject:
   - component: {fileID: 1555332651}
   - component: {fileID: 1555332653}
   - component: {fileID: 1555332650}
-  - component: {fileID: 1555332655}
   - component: {fileID: 1555332656}
+  - component: {fileID: 1555332655}
   - component: {fileID: 1555332654}
-  - component: {fileID: 1555332658}
-  - component: {fileID: 1555332657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2896,7 +2907,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walk: {fileID: 1555332653}
-  gameObject: {fileID: 0}
 --- !u!212 &1555332651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2955,7 +2965,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.05, y: -0.59, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1570328198}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2978,8 +2989,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!68 &1555332654
-EdgeCollider2D:
+--- !u!58 &1555332654
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2988,14 +2999,12 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.05, y: -0.09}
-  - {x: 0.05, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!50 &1555332655
 Rigidbody2D:
   serializedVersion: 4
@@ -3015,62 +3024,53 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!68 &1555332656
-EdgeCollider2D:
+--- !u!114 &1555332656
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555332649}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.05, y: 0.09}
-  - {x: 0.05, y: 0.09}
---- !u!68 &1555332657
-EdgeCollider2D:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c971e2d42397ded4fa33e97b3f880523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1570328198}
+  bulletPrefab: {fileID: 8625899756491534200, guid: d894813543257ac4a95b67f52b4010b4,
+    type: 3}
+--- !u!1 &1570328197
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555332649}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.1, y: 0.04}
-  - {x: 0.1, y: -0.04}
---- !u!68 &1555332658
-EdgeCollider2D:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570328198}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570328198
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555332649}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.1, y: 0.04}
-  - {x: -0.1, y: -0.04}
+  m_GameObject: {fileID: 1570328197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1555332652}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915029750
 GameObject:
   m_ObjectHideFlags: 0

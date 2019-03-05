@@ -5,24 +5,42 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator walk;
-    public GameObject gameObject;
 
     private bool walking;
     private float moveSpeed;
     private int health;
-    private Collider[] c;
 
     // Start is called before the first frame update
     void Start()
     {
         moveSpeed = 3f;
         health = 10;
-        c = GetComponents<Collider>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collider2D collision)
     {
-        Debug.Log("Player was hit: " + collision.ToString());
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if(enemy != null)
+        {
+            TakeDamage(enemy.getDamage());
+        }
+    }
+
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("health is now " + health);
+        Invulnerable();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Invulnerable()
+    {
+
     }
 
     // Update is called once per frame
