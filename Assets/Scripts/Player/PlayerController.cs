@@ -5,22 +5,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator walk;
+    public CircleCollider2D hitbox;
+    public SpriteRenderer sprite;
 
     private bool walking;
     private float moveSpeed;
-    private int health;
+    private int health = 10;
+    private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         moveSpeed = 3f;
-        health = 10;
     }
 
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if(enemy != null)
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        Debug.Log("hit");
+        if (enemy != null)
         {
             TakeDamage(enemy.getDamage());
         }
@@ -40,12 +43,23 @@ public class PlayerController : MonoBehaviour
 
     void Invulnerable()
     {
+        hitbox.enabled = false;
+        timer = 0;
 
+        while (timer < 5)
+        {
+            sprite.enabled = !sprite.enabled;
+        }
+
+        sprite.enabled = true;
+        hitbox.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
