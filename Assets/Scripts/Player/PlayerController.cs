@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator walk;
-    public CircleCollider2D hitbox;
+    public Collider2D hitbox;
     public SpriteRenderer sprite;
 
     private bool walking;
     private float moveSpeed;
     private int health = 10;
     private float timer = 0;
+    private bool invulnerable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,9 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 3f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        Enemy enemy = collision.GetComponent<Enemy>();
         Debug.Log("hit");
         if (enemy != null)
         {
@@ -43,22 +44,24 @@ public class PlayerController : MonoBehaviour
 
     void Invulnerable()
     {
+        invulnerable = true;
         hitbox.enabled = false;
         timer = 0;
-
-        while (timer < 5)
-        {
-            sprite.enabled = !sprite.enabled;
-        }
-
-        sprite.enabled = true;
-        hitbox.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+        if (invulnerable)
+        {
+            sprite.enabled = !sprite.enabled;
+            if (timer > 2) {
+                sprite.enabled = true;
+                hitbox.enabled = true;
+                invulnerable = false;
+            }
+        }
 
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
