@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         moveSpeed = 3f;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

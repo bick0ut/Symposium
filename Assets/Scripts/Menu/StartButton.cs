@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class StartButton : MonoBehaviour
 {
     public Button button;
-
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,8 @@ public class StartButton : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("room1");
+        int startingScene = Random.Range(1, 3);
+        SceneManager.LoadScene("room"+startingScene);
+        player.SetActive(true);
     }
 }
