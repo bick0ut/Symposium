@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 3312143998825633446}
   - component: {fileID: 3312143998825633441}
   - component: {fileID: 3312143998825633467}
+  - component: {fileID: 7488470247147129380}
   - component: {fileID: 3312143998825633444}
   - component: {fileID: 3312143998825633445}
   - component: {fileID: 3312143998825633466}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +136,20 @@ MonoBehaviour:
   firePoint: {fileID: 3312143998841038349}
   bulletPrefab: {fileID: 8625899756491534200, guid: d894813543257ac4a95b67f52b4010b4,
     type: 3}
+--- !u!114 &7488470247147129380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312143998825633442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610395c79e25e884c822b12460219da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 3312143998825633442}
+  enemy1: {fileID: 4497339825768732935, guid: 20f2b69f92aa03948af7e23b60644a70, type: 3}
 --- !u!50 &3312143998825633444
 Rigidbody2D:
   serializedVersion: 4

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class StartButton : MonoBehaviour
 {
@@ -21,8 +21,8 @@ public class StartButton : MonoBehaviour
 
     private void StartGame()
     {
-        int startingScene = Random.Range(1, 3);
-        SceneManager.LoadScene("room"+startingScene);
         player.SetActive(true);
+        MapController map = player.GetComponent<MapController>();
+        map.NextRoom();
     }
 }
