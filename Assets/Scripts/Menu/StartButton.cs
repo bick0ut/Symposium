@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class StartButton : MonoBehaviour
 {
     public Button button;
-    public GameObject player;
+    public GameObject MapController;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,7 @@ public class StartButton : MonoBehaviour
 
     private void StartGame()
     {
-        player.SetActive(true);
-        MapController map = player.GetComponent<MapController>();
-        map.NextRoom();
+        MapController map = this.MapController.GetComponent<MapController>();
+        map.StartGame();
     }
 }
