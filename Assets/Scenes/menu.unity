@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 1017800085}
   m_Layer: 0
   m_Name: MapController
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,7 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610395c79e25e884c822b12460219da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  PlayerToSpawn: {fileID: 3312143998825633442, guid: 17cd910f5719e3c4bb316734290a916e,
+    type: 3}
   enemy1: {fileID: 4497339825768732935, guid: 20f2b69f92aa03948af7e23b60644a70, type: 3}
 --- !u!4 &1017800086
 Transform:
