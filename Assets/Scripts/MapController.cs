@@ -31,7 +31,7 @@ public class MapController : MonoBehaviour
 
     public void StartGame()
     {
-        Player = Instantiate(PlayerToSpawn, new Vector3(-5, 0, 0), Quaternion.identity);
+        Player = Instantiate(PlayerToSpawn, new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         NextRoom();
     }
 
@@ -48,7 +48,7 @@ public class MapController : MonoBehaviour
         this.room++;
 
         Player.transform.position = new Vector3(-5, 0, 0);
-        Invoke("SpawnEnemies", 0.5f);
+        Invoke("SpawnEnemies", 0.1f);
   
     }
 

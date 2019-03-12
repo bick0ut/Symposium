@@ -10,7 +10,7 @@ public class StartButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        button.onClick.AddListener(StartGame);
+        button.onClick.AddListener(ClickStart);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class StartButton : MonoBehaviour
 
     }
 
-    private void StartGame()
+    private void ClickStart()
     {
         MapController map = this.MapController.GetComponent<MapController>();
         map.StartGame();

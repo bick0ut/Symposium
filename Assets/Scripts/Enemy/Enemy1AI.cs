@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy1AI : MonoBehaviour
 {
-    public MapController map;
+    public GameObject map;
 
     private GameObject Player;
     private float moveSpeed;
@@ -13,7 +13,8 @@ public class Enemy1AI : MonoBehaviour
     void Start()
     {
         moveSpeed = 1f;
-        Player = map.GetPlayer();
+        map = GameObject.FindWithTag("Map");
+        Player = map.GetComponent<MapController>().GetPlayer();
     }
 
     // Update is called once per frame
@@ -23,9 +24,6 @@ public class Enemy1AI : MonoBehaviour
             float AngleRad = Mathf.Atan2(Player.transform.position.y - transform.position.y, Player.transform.position.x - transform.position.x);
             float AngleDeg = (180 / Mathf.PI) * AngleRad;
             this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
-
-            Debug.Log("Y POSITION: " + Player.transform.position.y);
-            Debug.Log("X POSITION: " + Player.transform.position.x);
         }
 
         transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
