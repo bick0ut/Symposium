@@ -25,9 +25,13 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
+        if (invulnerable)
+        {
+            return;
+        }
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
             Invulnerable();
@@ -57,22 +61,21 @@ public class PlayerController : MonoBehaviour
     void Invulnerable()
     {
         invulnerable = true;
-        hitbox.enabled = false;
-        timer = 0;
+        Invoke("Vulnerable", 3f);
+    }
+
+    void Vulnerable()
+    {
+        invulnerable = false;
+        sprite.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
         if (invulnerable)
         {
             sprite.enabled = !sprite.enabled;
-            if (timer > 2) {
-                sprite.enabled = true;
-                hitbox.enabled = true;
-                invulnerable = false;
-            }
         }
 
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
