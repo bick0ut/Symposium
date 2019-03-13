@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Collider2D hitbox;
     public SpriteRenderer sprite;
 
+    public GameObject map;
+
     private bool walking;
     private float moveSpeed;
     private int health = 10;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        map = GameObject.FindWithTag("Map");
         moveSpeed = 3f;
         DontDestroyOnLoad(gameObject);
     }
@@ -25,10 +28,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
-        Debug.Log("hit");
         if (enemy != null)
         {
+            Invulnerable();
             TakeDamage(enemy.getDamage());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Portal" && Input.GetKey(KeyCode.E))
+        {
+            map.GetComponent<MapController>().NextRoom();
         }
     }
 
@@ -37,7 +48,6 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         Debug.Log("health is now " + health);
-        Invulnerable();
         if (health <= 0)
         {
             Destroy(gameObject);

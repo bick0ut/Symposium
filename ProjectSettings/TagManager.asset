@@ -8,6 +8,7 @@ TagManager:
   - Screen
   - Terrain
   - Map
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -51,12 +52,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Entities
-    uniqueID: 2273462143
+  - name: Portal
+    uniqueID: 1743924427
     locked: 0
   - name: Projectiles
     uniqueID: 3001403781
     locked: 0
-  - name: FG
-    uniqueID: 1743924427
+  - name: Entities
+    uniqueID: 2273462143
+    locked: 0
+  - name: FG_Projectiles
+    uniqueID: 594568525
     locked: 0

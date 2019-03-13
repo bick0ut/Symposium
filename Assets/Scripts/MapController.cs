@@ -9,17 +9,21 @@ public class MapController : MonoBehaviour
 
     public GameObject PlayerToSpawn;
 
+    public GameObject green;
+
     public GameObject enemy1;
 
     private int floor = 0;
     private int room = 0;
+
+    private int mobCount = 0;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
 
-    public int GgetFloor()
+    public int GetFloor()
     {
         return floor;
     }
@@ -54,12 +58,24 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        int mobCount = Random.Range(3, 6);
-        for (int i = 0; i < mobCount; i++)
+        int spawnCount = Random.Range(3, 6);
+        for (int i = 0; i < spawnCount; i++)
         {
             int xRange = Random.Range(-3, 8);
             int yRange = Random.Range(-3, 4);
             Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+        }
+
+        mobCount = spawnCount;
+    }
+
+    public void EnemyKilled()
+    {
+        mobCount--;
+
+        if (mobCount == 0)
+        {
+            Instantiate(green, new Vector3(7, 0, 0), Quaternion.identity);
         }
     }
 }
