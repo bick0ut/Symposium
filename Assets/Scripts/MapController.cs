@@ -51,7 +51,7 @@ public class MapController : MonoBehaviour
         SceneManager.LoadScene("room" + startingScene);
         this.room++;
 
-        Player.transform.position = new Vector3(-5, 0, 0);
+        Player.transform.position = new Vector3(-9, 0, 0);
         Invoke("SpawnEnemies", 0.1f);
   
     }
@@ -61,7 +61,7 @@ public class MapController : MonoBehaviour
         int spawnCount = Random.Range(3, 6);
         for (int i = 0; i < spawnCount; i++)
         {
-            int xRange = Random.Range(-3, 8);
+            int xRange = Random.Range(-5, 12);
             int yRange = Random.Range(-3, 4);
             Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
         }
@@ -75,7 +75,7 @@ public class MapController : MonoBehaviour
 
         if (mobCount == 0)
         {
-            Instantiate(green, new Vector3(7, 0, 0), Quaternion.identity);
+            Instantiate(green, new Vector3(9, 0, 0), Quaternion.identity);
         }
     }
 }

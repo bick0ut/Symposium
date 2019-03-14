@@ -12,7 +12,7 @@ public class Enemy1AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 1f;
+        moveSpeed = 1.5f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
     }

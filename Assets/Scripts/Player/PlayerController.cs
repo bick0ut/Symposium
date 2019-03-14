@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sprite;
 
     public GameObject map;
+    public GameObject gui;
 
     private bool walking;
     private float moveSpeed;
-    private int health = 10;
-    private float timer = 0;
+    private float health = 10;
+    private float maxHealth = 10;
     private bool invulnerable = false;
 
 
@@ -21,7 +22,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         map = GameObject.FindWithTag("Map");
-        moveSpeed = 3f;
+        gui = GameObject.FindWithTag("GUI");
+        moveSpeed = 4f;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -48,9 +50,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void TakeDamage(int damage)
+    void TakeDamage(float damage)
     {
         health -= damage;
+        gui.GetComponent<GUI>().UpdateHP(maxHealth,health);
         Debug.Log("health is now " + health);
         if (health <= 0)
         {
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
     void Invulnerable()
     {
         invulnerable = true;
-        Invoke("Vulnerable", 3f);
+        Invoke("Vulnerable", 1.5f);
     }
 
     void Vulnerable()
@@ -73,11 +76,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (invulnerable)
-        {
-            sprite.enabled = !sprite.enabled;
-        }
-
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
@@ -118,5 +116,13 @@ public class PlayerController : MonoBehaviour
 
         walking = false;
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (invulnerable)
+        {
+            sprite.enabled = !sprite.enabled;
+        }
     }
 }
