@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     void TakeDamage(float damage)
     {
         health -= damage;
-        gui.GetComponent<GUI>().UpdateHP(maxHealth,health);
+        gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         Debug.Log("health is now " + health);
         if (health <= 0)
         {
