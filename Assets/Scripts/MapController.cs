@@ -61,7 +61,7 @@ public class MapController : MonoBehaviour
         int spawnCount = Random.Range(3, 6);
         for (int i = 0; i < spawnCount; i++)
         {
-            int xRange = Random.Range(-5, 12);
+            int xRange = Random.Range(-5, 10);
             int yRange = Random.Range(-3, 4);
             Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
         }

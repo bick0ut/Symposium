@@ -7,23 +7,26 @@ public class Weapon1Controller : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool cooldown = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0)&&!cooldown)
         {
             Shoot();
+            cooldown = true;
+            Invoke("Cooldown", 0.2f);
         }
     }
 
     void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void Cooldown()
+    {
+        cooldown = false;
     }
 }

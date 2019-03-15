@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
+        gui.GetComponent<GUI>().Show();
         moveSpeed = 4f;
         DontDestroyOnLoad(gameObject);
     }
@@ -81,6 +82,20 @@ public class PlayerController : MonoBehaviour
         float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gui.GetComponent<GUI>().ChangeWeapon(0);
+            gameObject.GetComponent<Weapon1Controller>().enabled = true;
+            gameObject.GetComponent<Weapon2Controller>().enabled = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gui.GetComponent<GUI>().ChangeWeapon(1);
+            gameObject.GetComponent<Weapon2Controller>().enabled = true;
+            gameObject.GetComponent<Weapon1Controller>().enabled = false;
+        }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
