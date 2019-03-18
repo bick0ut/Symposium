@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private float maxHealth = 10;
     private bool invulnerable = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +73,11 @@ public class PlayerController : MonoBehaviour
         sprite.enabled = true;
     }
 
+    private void DisableWeapons()
+    {
+        gameObject.GetComponent<Weapon1Controller>().enabled = false;
+        gameObject.GetComponent<Weapon2Controller>().enabled = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -86,15 +90,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gui.GetComponent<GUI>().ChangeWeapon(0);
+            DisableWeapons();
+
             gameObject.GetComponent<Weapon1Controller>().enabled = true;
-            gameObject.GetComponent<Weapon2Controller>().enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gui.GetComponent<GUI>().ChangeWeapon(1);
+            DisableWeapons();
+
             gameObject.GetComponent<Weapon2Controller>().enabled = true;
-            gameObject.GetComponent<Weapon1Controller>().enabled = false;
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
