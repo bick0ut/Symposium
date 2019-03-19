@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject healthPrefab;
     private GameObject map;
 
     private float health = 10;
@@ -30,6 +31,10 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
+        if (Random.Range(0, 10)<=1)
+        {
+            Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
+        }
         map.GetComponent<MapController>().EnemyKilled();
         Destroy(gameObject);
     }

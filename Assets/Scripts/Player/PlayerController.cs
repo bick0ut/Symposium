@@ -47,14 +47,29 @@ public class PlayerController : MonoBehaviour
         {
             map.GetComponent<MapController>().NextRoom();
         }
+
+         if (collision.tag == "Health")
+        {
+            Heal(1);
+            Destroy(collision.gameObject);
+        }
     }
 
+    void Heal(float heal)
+    {
+        health += heal;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
+    }
 
     void TakeDamage(float damage)
     {
         health -= damage;
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
-        Debug.Log("health is now " + health);
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -88,7 +103,7 @@ public class PlayerController : MonoBehaviour
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Alpha1))
         {
             gui.GetComponent<GUI>().ChangeWeapon(0);
             DisableWeapons();
@@ -96,7 +111,7 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<Weapon1Controller>().enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKey(KeyCode.Alpha2))
         {
             gui.GetComponent<GUI>().ChangeWeapon(1);
             DisableWeapons();
@@ -104,7 +119,7 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<Weapon2Controller>().enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKey(KeyCode.Alpha3))
         {
             gui.GetComponent<GUI>().ChangeWeapon(2);
             DisableWeapons();
