@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3312143998825633441}
   - component: {fileID: 3312143998825633467}
   - component: {fileID: 3594296595104992602}
+  - component: {fileID: 9144745777065347301}
   - component: {fileID: 7488470247147129380}
   - component: {fileID: 3312143998825633444}
   - component: {fileID: 3312143998825633445}
@@ -152,6 +153,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3312143998841038349}
   laserPrefab: {fileID: 1867762683561629818, guid: fb525cf9ef19c084294722b9beaaf2ed,
+    type: 3}
+--- !u!114 &9144745777065347301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312143998825633442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0721b25b5394245a76a677d88dbb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 3312143998841038349}
+  swordPrefab: {fileID: 8995255521736725982, guid: 5083604009630bc45a148a534a34bb7d,
     type: 3}
 --- !u!114 &7488470247147129380
 MonoBehaviour:

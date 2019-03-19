@@ -11,6 +11,7 @@ public class GUI : MonoBehaviour
 
     public GameObject weapon1;
     public GameObject weapon2;
+    public GameObject weapon3;
 
 
 
@@ -19,6 +20,7 @@ public class GUI : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         WeaponList.Add(weapon1);
         WeaponList.Add(weapon2);
+        WeaponList.Add(weapon3);
     }
 
     public void UpdateHP(float health, float maxHealth)

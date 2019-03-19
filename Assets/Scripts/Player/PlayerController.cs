@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.GetComponent<Weapon1Controller>().enabled = false;
         gameObject.GetComponent<Weapon2Controller>().enabled = false;
+        gameObject.GetComponent<Weapon3Controller>().enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -101,6 +102,14 @@ public class PlayerController : MonoBehaviour
             DisableWeapons();
 
             gameObject.GetComponent<Weapon2Controller>().enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gui.GetComponent<GUI>().ChangeWeapon(2);
+            DisableWeapons();
+
+            gameObject.GetComponent<Weapon3Controller>().enabled = true;
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
