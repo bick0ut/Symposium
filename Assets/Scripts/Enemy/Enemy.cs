@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        if (Random.Range(0, 10)<=1)
+        if (Random.Range(0, 10)==0)
         {
             Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
         }

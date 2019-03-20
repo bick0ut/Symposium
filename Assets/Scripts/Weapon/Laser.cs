@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
 
         this.transform.position = player.transform.position;
 
-        if (!Input.GetMouseButton(0)||Input.GetKey(KeyCode.Alpha1)||Input.GetKey(KeyCode.Alpha2)||Input.GetKey(KeyCode.Alpha3))
+        if (!Input.GetMouseButton(0)||Input.GetKeyDown(KeyCode.Alpha1)||Input.GetKeyDown(KeyCode.Alpha2)||Input.GetKeyDown(KeyCode.Alpha3))
         {
             Destroy(gameObject);
         }

@@ -10,6 +10,7 @@ TagManager:
   - Map
   - Portal
   - GUI
+  - Health
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: Portal
     uniqueID: 1743924427
+    locked: 0
+  - name: Pickups
+    uniqueID: 2068733053
     locked: 0
   - name: Projectiles
     uniqueID: 3001403781

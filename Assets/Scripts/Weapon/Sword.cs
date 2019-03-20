@@ -19,7 +19,13 @@ public class Sword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = player.transform.position;
+        if (player != null)
+        {
+            this.transform.position = player.transform.position;
+        } else { 
+            Destroy(gameObject);
+        }
+
         if (tick > 20)
         {
             Destroy(gameObject);

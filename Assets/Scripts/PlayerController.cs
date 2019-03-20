@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Heal(float heal)
+    public void Heal(float heal)
     {
         health += heal;
         if (health > maxHealth)
@@ -66,9 +66,13 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
@@ -76,12 +80,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Invulnerable()
+    public void Invulnerable()
     {
         invulnerable = true;
         Invoke("Vulnerable", 1.5f);
     }
 
+    public bool IsInvulnerable()
+    {
+        return invulnerable;
+    }
     void Vulnerable()
     {
         invulnerable = false;
@@ -103,7 +111,7 @@ public class PlayerController : MonoBehaviour
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gui.GetComponent<GUI>().ChangeWeapon(0);
             DisableWeapons();
@@ -111,7 +119,7 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<Weapon1Controller>().enabled = true;
         }
 
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gui.GetComponent<GUI>().ChangeWeapon(1);
             DisableWeapons();
@@ -119,7 +127,7 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<Weapon2Controller>().enabled = true;
         }
 
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             gui.GetComponent<GUI>().ChangeWeapon(2);
             DisableWeapons();

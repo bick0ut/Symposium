@@ -12,6 +12,7 @@ public class MapController : MonoBehaviour
     public GameObject green;
 
     public GameObject enemy1;
+    public GameObject enemy2;
 
     private int floor = 0;
     private int room = 0;
@@ -58,14 +59,19 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        int spawnCount = Random.Range(3, 6);
+        int spawnCount = Random.Range(5, 11);
         for (int i = 0; i < spawnCount; i++)
         {
             int xRange = Random.Range(-5, 10);
             int yRange = Random.Range(-3, 4);
-            Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+            if (Random.Range(0, 2) == 1) { 
+                Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+            } else
+            {
+                Instantiate(enemy2, new Vector3(xRange, yRange, 0), Quaternion.identity);
+            }
         }
-
+    
         mobCount = spawnCount;
     }
 
