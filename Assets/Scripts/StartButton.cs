@@ -9,7 +9,7 @@ public class StartButton : MonoBehaviour
 
     private void Awake()
     {
-        Screen.SetResolution(500, 400, false);
+        Screen.SetResolution(1600, 900, false);
     }
 
     // Start is called before the first frame update
