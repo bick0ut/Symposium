@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
     public GameObject healthPrefab;
     private GameObject map;
 
+    public float damage;
     private float health = 10;
-    private float damage = 1;
 
     private void Start()
     {

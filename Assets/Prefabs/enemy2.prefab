@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951702648172790768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_Children: []
   m_Father: {fileID: 4497339825768732930}
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPrefab: {fileID: 4772162956693705488, guid: f14eade7676f6294d961e0b3e70673eb,
     type: 3}
+  damage: 0
 --- !u!114 &4238525553328056654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cab1b2aace7fcd429557642a80a103a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: 4497339825768732932}
   bulletPrefab: {fileID: 3714490186810769856, guid: 3beaf474530ee0d4680a0bf686558093,
     type: 3}
   firePoint: {fileID: 7230117558953425045}

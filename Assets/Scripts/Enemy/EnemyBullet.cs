@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float moveSpeed = 20f;
+    public float moveSpeed = 15f;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class EnemyBullet : MonoBehaviour
         {
             if (!player.IsInvulnerable()) {
                 player.Invulnerable();
-                player.TakeDamage(2);
+                player.TakeDamage(1);
             }
             Destroy(gameObject);
         }

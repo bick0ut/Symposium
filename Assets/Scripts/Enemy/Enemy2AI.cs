@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy2AI : MonoBehaviour
 {
+    public Animator shoot;
+
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -30,9 +32,10 @@ public class Enemy2AI : MonoBehaviour
 
         if (!cooldown)
         {
-            Shoot();
             cooldown = true;
-            Invoke("Cooldown", 1.5f);
+            shoot.Play("Enemy2Animation", 0, 0);
+            Invoke("Shoot", 0.5f);
+            Invoke("Cooldown", 1f);
         }
     }
 
