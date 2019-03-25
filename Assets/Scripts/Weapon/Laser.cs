@@ -35,6 +35,13 @@ public class Laser : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    private void FixedUpdate()
+    {
+        if (player == null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

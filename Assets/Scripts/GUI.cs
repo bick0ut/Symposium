@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUI : MonoBehaviour
 {
     public GameObject bar;
     public GameObject empty;
+
+    public GameObject canvas;
+    public Text floorDisplay;
+    public Text roomDisplay;
 
     ArrayList WeaponList = new ArrayList();
 
@@ -33,6 +38,7 @@ public class GUI : MonoBehaviour
     {
         bar.SetActive(true);
         empty.SetActive(true);
+        canvas.SetActive(true);
         weapon1.SetActive(true);
     }
 
@@ -40,6 +46,12 @@ public class GUI : MonoBehaviour
     {
         bar.SetActive(false);
         empty.SetActive(false);
+        canvas.SetActive(false);
+
+        foreach (GameObject w in WeaponList)
+        {
+            w.SetActive(false);
+        }
     }
 
     public void ChangeWeapon(int weapon)
@@ -52,5 +64,15 @@ public class GUI : MonoBehaviour
         GameObject selected = (GameObject)WeaponList[weapon];
 
         selected.SetActive(true);
+    }
+
+    public void UpdateFloor(int floor)
+    {
+        floorDisplay.text = "Floor: " + floor;
+    }
+
+    public void UpdateRoom(int floor)
+    {
+        roomDisplay.text = "Room: " + floor;
     }
 }

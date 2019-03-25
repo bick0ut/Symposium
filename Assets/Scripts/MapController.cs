@@ -14,8 +14,10 @@ public class MapController : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
 
-    private int floor = 0;
-    private int room = 0;
+    public GameObject GUI;
+
+    private int floor = 1;
+    private int room = 1;
 
     private int mobCount = 0;
 
@@ -37,6 +39,7 @@ public class MapController : MonoBehaviour
     public void StartGame()
     {
         Player = Instantiate(PlayerToSpawn, new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
+        GUI.GetComponent<GUI>().UpdateFloor(floor);
         NextRoom();
     }
 
@@ -47,6 +50,7 @@ public class MapController : MonoBehaviour
 
     public void NextRoom()
     {
+        GUI.GetComponent<GUI>().UpdateRoom(room);
         int startingScene = Random.Range(1, 3);
 
         SceneManager.LoadScene("room" + startingScene);
@@ -54,12 +58,11 @@ public class MapController : MonoBehaviour
 
         Player.transform.position = new Vector3(-9, 0, 0);
         Invoke("SpawnEnemies", 0.1f);
-  
     }
 
     public void SpawnEnemies()
     {
-        int spawnCount = Random.Range(5, 11);
+        int spawnCount = Random.Range(10, 21);
         for (int i = 0; i < spawnCount; i++)
         {
             int xRange = Random.Range(-5, 10);

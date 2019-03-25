@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPrefab: {fileID: 4772162956693705488, guid: f14eade7676f6294d961e0b3e70673eb,
     type: 3}
-  damage: 0
+  damage: 1
 --- !u!114 &4238525553328056654
 MonoBehaviour:
   m_ObjectHideFlags: 0
