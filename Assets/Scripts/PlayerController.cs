@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
     public Collider2D hitbox;
     public SpriteRenderer sprite;
 
-    public GameObject map;
-    public GameObject gui;
+    private GameObject map;
+    private GameObject gui;
+
 
     private bool walking;
     private float moveSpeed;
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
+            map.GetComponent<MapController>().EnableMenu();
             Destroy(gameObject);
         }
     }

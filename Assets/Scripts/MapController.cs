@@ -17,6 +17,7 @@ public class MapController : MonoBehaviour
     public GameObject boss1;
 
     public GameObject GUI;
+    public GameObject menu;
 
     private int floor = 1;
     private int room = 0;
@@ -96,6 +97,10 @@ public class MapController : MonoBehaviour
             mobCount = 0;
             Instantiate(boss1, new Vector3(-5, 0, 0), Quaternion.identity);
         }
+
+        Debug.Log("mobcount: " + mobCount);
+        Debug.Log("floor: " + floor);
+        Debug.Log("room: " + room);
     }
 
     public void EnemyKilled()
@@ -111,5 +116,10 @@ public class MapController : MonoBehaviour
     public void SpawnPortal()
     {
         Instantiate(green, new Vector3(9, 0, 0), Quaternion.identity);
+    }
+
+    public void EnableMenu()
+    {
+        menu.GetComponent<MenuButton>().Show();
     }
 }
