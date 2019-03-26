@@ -16,13 +16,17 @@ public class Weapon1Controller : MonoBehaviour
         {
             Shoot();
             cooldown = true;
-            Invoke("Cooldown", 0.2f);
+            Invoke("Cooldown", 1.0f);
         }
     }
 
     void Shoot()
     {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, -30));
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, -15));
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, 15));
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, 30));
     }
 
     void Cooldown()

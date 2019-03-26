@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         if (enemy != null)
         {
             Invulnerable();
-            TakeDamage(enemy.getDamage());
+            TakeDamage(enemy.GetDamage());
         }
     }
 

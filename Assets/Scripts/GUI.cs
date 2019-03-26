@@ -8,6 +8,9 @@ public class GUI : MonoBehaviour
     public GameObject bar;
     public GameObject empty;
 
+    public GameObject barBoss;
+    public GameObject emptyBoss;
+
     public GameObject canvas;
     public Text floorDisplay;
     public Text roomDisplay;
@@ -34,6 +37,12 @@ public class GUI : MonoBehaviour
         bar.transform.localScale = size;
     }
 
+    public void UpdateBossHP(float health, float maxHealth)
+    {
+        Vector3 size = new Vector3((health / maxHealth * 50f), 2, 0);
+        barBoss.transform.localScale = size;
+    }
+
     public void Show()
     {
         bar.SetActive(true);
@@ -46,6 +55,7 @@ public class GUI : MonoBehaviour
     {
         bar.SetActive(false);
         empty.SetActive(false);
+        HideBoss();
         canvas.SetActive(false);
 
         foreach (GameObject w in WeaponList)
@@ -74,5 +84,17 @@ public class GUI : MonoBehaviour
     public void UpdateRoom(int floor)
     {
         roomDisplay.text = "Room: " + floor;
+    }
+
+    public void ShowBoss()
+    {
+        barBoss.SetActive(true);
+        emptyBoss.SetActive(true);
+    }
+
+    public void HideBoss()
+    {
+        barBoss.SetActive(false);
+        emptyBoss.SetActive(false);
     }
 }

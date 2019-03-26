@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss: MonoBehaviour
 {
-    public GameObject healthPrefab;
     private GameObject map;
+    private GameObject gui;
 
     public float damage;
-    public float health = 10;
+    public float health = 100;
 
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
+        gui = GameObject.FindWithTag("GUI");
     }
 
     public void TakeDamage(float damage)
@@ -31,11 +32,7 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        if (Random.Range(0, 10)==0)
-        {
-            Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
-        }
-        map.GetComponent<MapController>().EnemyKilled();
+        map.GetComponent<MapController>().SpawnPortal();
         Destroy(gameObject);
     }
 }
