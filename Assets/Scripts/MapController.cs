@@ -27,6 +27,7 @@ public class MapController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(menu);
     }
 
     public int GetFloor()
@@ -120,6 +121,6 @@ public class MapController : MonoBehaviour
 
     public void EnableMenu()
     {
-        menu.GetComponent<MenuButton>().Show();
+        menu.SetActive(true);
     }
 }
