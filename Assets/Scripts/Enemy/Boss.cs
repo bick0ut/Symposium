@@ -9,17 +9,20 @@ public class Boss: MonoBehaviour
 
     public float damage;
     public float health = 100;
+    public float maxHealth = 100;
 
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
+        gui.GetComponent<GUI>().ShowBoss();
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
 
+        gui.GetComponent<GUI>().UpdateBossHP(health, maxHealth);
         if (health <= 0)
         {
             Die();
@@ -32,6 +35,7 @@ public class Boss: MonoBehaviour
     }
     void Die()
     {
+        gui.GetComponent<GUI>().HideBoss();
         map.GetComponent<MapController>().SpawnPortal();
         Destroy(gameObject);
     }

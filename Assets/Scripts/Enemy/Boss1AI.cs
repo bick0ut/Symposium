@@ -16,6 +16,9 @@ public class Boss1AI : MonoBehaviour
     public Transform Enemy13;
     public Transform Enemy2;
 
+    private bool cooldown;
+    private bool alt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +37,32 @@ public class Boss1AI : MonoBehaviour
         }
 
         transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
+
+        if (!cooldown)
+        {
+            cooldown = true;
+            Invoke("Shoot", 0.5f);
+            Invoke("Cooldown", 5f);
+        }
     }
 
+    void Shoot()
+    {
+        alt = !alt;
+        if (alt)
+        {
+            Instantiate(Enemy1Prefab, Enemy11.position, Enemy11.rotation);
+            Instantiate(Enemy1Prefab, Enemy12.position, Enemy12.rotation);
+            Instantiate(Enemy1Prefab, Enemy13.position, Enemy13.rotation);
+        } else
+        {
+            Instantiate(Enemy2Prefab, Enemy2.position, Enemy2.rotation);
+        }
+    }
+
+    void Cooldown()
+    {
+        cooldown = false;
+    }
 
 }
