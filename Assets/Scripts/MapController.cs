@@ -71,8 +71,7 @@ public class MapController : MonoBehaviour
     public void NextFloor()
     {
         this.floor++;
-        room = 0;
-        NextRoom();
+        room = 1;
 
         GUI.GetComponent<GUI>().UpdateFloor(floor);
     }
