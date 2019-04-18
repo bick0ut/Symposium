@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (boss!= null)
         {
             Invulnerable();
-            TakeDamage(enemy.GetDamage());
+            TakeDamage(boss.GetDamage());
         }
     }
 
