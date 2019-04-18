@@ -40,6 +40,13 @@ public class PlayerController : MonoBehaviour
             Invulnerable();
             TakeDamage(enemy.GetDamage());
         }
+
+        Boss boss = collision.gameObject.GetComponent<Boss>();
+        if (boss!= null)
+        {
+            Invulnerable();
+            TakeDamage(enemy.GetDamage());
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

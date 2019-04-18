@@ -58,6 +58,10 @@ public class MapController : MonoBehaviour
 
         SceneManager.LoadScene("room" + startingScene);
         this.room++;
+        if (room > 2)
+        {
+            NextFloor();
+        }
 
         Player.transform.position = new Vector3(-9, 0, 0);
         Invoke("SpawnEnemies", 0.1f);
@@ -75,7 +79,7 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (room != 5)
+        if (room != 2)
         {
             int spawnCount = Random.Range(8, 13);
             for (int i = 0; i < spawnCount; i++)
@@ -95,13 +99,10 @@ public class MapController : MonoBehaviour
             mobCount = spawnCount;
         } else
         {
-            mobCount = 0;
+            mobCount = -1;
             Instantiate(boss1, new Vector3(-5, 0, 0), Quaternion.identity);
         }
 
-        Debug.Log("mobcount: " + mobCount);
-        Debug.Log("floor: " + floor);
-        Debug.Log("room: " + room);
     }
 
     public void EnemyKilled()
