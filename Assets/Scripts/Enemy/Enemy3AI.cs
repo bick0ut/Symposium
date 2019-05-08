@@ -10,11 +10,13 @@ public class Enemy3AI : MonoBehaviour
     private GameObject Player;
     private bool cooldown;
 
+    private float moveSpeed;
     public GameObject creep;
 
     // Start is called before the first frame update
     void Start()
     {
+        moveSpeed = 1.5f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
     }
@@ -22,6 +24,7 @@ public class Enemy3AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
         if (Player != null)
         {
             float AngleRad = Mathf.Atan2(Player.transform.position.y - transform.position.y, Player.transform.position.x - transform.position.x);
