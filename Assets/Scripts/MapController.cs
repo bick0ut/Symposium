@@ -13,6 +13,7 @@ public class MapController : MonoBehaviour
 
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject enemy3;
 
     public GameObject boss1;
 
@@ -85,13 +86,18 @@ public class MapController : MonoBehaviour
             {
                 int xRange = Random.Range(-5, 10);
                 int yRange = Random.Range(-3, 4);
-                if (Random.Range(0, 2) == 1)
+
+                int rando = Random.Range(0, 3);
+                if (rando == 1)
                 {
                     Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
                 }
-                else
+                else if(rando == 2) 
                 {
                     Instantiate(enemy2, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                } else
+                {
+                    Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
                 }
             }
 

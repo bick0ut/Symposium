@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private GameObject map;
     private GameObject gui;
 
+    private float damage = 1;
 
     private bool walking;
     private float moveSpeed;
@@ -63,6 +64,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public float GetDamage()
+    {
+        return this.damage;
+    }
     public void Heal(float heal)
     {
         health += heal;

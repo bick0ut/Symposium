@@ -20,6 +20,13 @@ public class Boss: MonoBehaviour
         gui.GetComponent<GUI>().ShowBoss();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Terrain")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }   
+    }
     public void TakeDamage(float damage)
     {
         health -= damage;
