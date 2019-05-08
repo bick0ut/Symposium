@@ -11,6 +11,8 @@ public class Boss: MonoBehaviour
     public float health = 100;
     public float maxHealth = 100;
 
+    private bool alive = true;
+
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
@@ -35,8 +37,12 @@ public class Boss: MonoBehaviour
     }
     void Die()
     {
-        gui.GetComponent<GUI>().HideBoss();
-        map.GetComponent<MapController>().SpawnPortal();
-        Destroy(gameObject);
+        if (alive)
+        {
+            alive = false;
+            gui.GetComponent<GUI>().HideBoss();
+            map.GetComponent<MapController>().SpawnPortal();
+            Destroy(gameObject);
+        }
     }
 }

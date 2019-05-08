@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float health = 10;
 
+    private bool alive = true;
+
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
@@ -31,11 +33,15 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        if (Random.Range(0, 10)==0)
+        if (alive)
         {
-            Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
+            alive = false;
+            if (Random.Range(0, 10) == 0)
+            {
+                Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
+            }
+            map.GetComponent<MapController>().EnemyKilled();
+            Destroy(gameObject);
         }
-        map.GetComponent<MapController>().EnemyKilled();
-        Destroy(gameObject);
     }
 }
