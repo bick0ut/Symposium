@@ -9,11 +9,11 @@ public class EnemyCreep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("Die", 4f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Invoke("Die", 10f);
         PlayerController player = collision.GetComponent<PlayerController>();
 
         if (player != null)
@@ -21,7 +21,7 @@ public class EnemyCreep : MonoBehaviour
             if (!player.IsInvulnerable())
             {
                 player.Invulnerable();
-                player.TakeDamage(2);
+                player.TakeDamage(1);
             }
         }
     }
