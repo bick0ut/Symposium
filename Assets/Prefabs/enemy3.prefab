@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7707347080656621274}
   creep: {fileID: 3714490186810769856, guid: 04bd190437870404eae0e0f56f6ec8ed, type: 3}
+  creepV: {fileID: 3714490186810769856, guid: 546ee48c55266ff459f5ba938bf4b040, type: 3}
 --- !u!50 &4497339825768732928
 Rigidbody2D:
   serializedVersion: 4

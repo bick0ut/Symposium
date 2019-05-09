@@ -27,14 +27,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Terrain")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+    }
+
     public float GetDamage()
     {
         return damage;
     }
+
     void Die()
     {
         if (alive)
         {
+            Enemy3AI enemy3 = gameObject.GetComponent<Enemy3AI>();
+
+            if (enemy3 != null)
+            {
+                enemy3.Explode();
+            }
+
             alive = false;
             if (Random.Range(0, 10) == 0)
             {

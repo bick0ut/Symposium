@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCreep : MonoBehaviour
+public class EnemyCreepV : MonoBehaviour
 {
+    public Rigidbody2D rb;
+    public float moveSpeed = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Die", 5f);
+        Invoke("Die", 5.5f);
+        Invoke("Stop", 0.5f);
+        rb.velocity = transform.right * moveSpeed;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -24,6 +29,10 @@ public class EnemyCreep : MonoBehaviour
         }
     }
 
+    private void Stop()
+    {
+        rb.velocity = transform.right * 0;
+    }
     private void Die()
     {
         Destroy(gameObject);

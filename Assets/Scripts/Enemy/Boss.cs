@@ -18,6 +18,7 @@ public class Boss: MonoBehaviour
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
         gui.GetComponent<GUI>().ShowBoss();
+        gui.GetComponent<GUI>().UpdateBossHP(health, maxHealth);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
