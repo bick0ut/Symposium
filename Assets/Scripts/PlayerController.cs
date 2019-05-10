@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(energyPrefab, transform.position, transform.rotation * Quaternion.));
+        Instantiate(energyPrefab, transform);
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
         gui.GetComponent<GUI>().Show();
