@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject energyPrefab;
+
     public Animator walk;
     public Collider2D hitbox;
     public SpriteRenderer sprite;
+
+    private float energy = 100;
+    private float maxEnergy = 100;
 
     private GameObject map;
     private GameObject gui;
@@ -18,10 +23,10 @@ public class PlayerController : MonoBehaviour
     private float health = 10;
     private float maxHealth = 10;
     private bool invulnerable = false;
-
     // Start is called before the first frame update
     void Start()
     {
+        Instantiate(energyPrefab, transform.position, transform.rotation * Quaternion.));
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
         gui.GetComponent<GUI>().Show();
@@ -62,6 +67,16 @@ public class PlayerController : MonoBehaviour
             Heal(1);
             Destroy(collision.gameObject);
         }
+    }
+
+    public float GetEnergy()
+    {
+        return energy;
+    }
+
+    public float GetMaxEnergy()
+    {
+        return maxEnergy;
     }
 
     public float GetDamage()

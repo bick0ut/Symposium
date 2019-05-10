@@ -57,6 +57,8 @@ public class Boss1AI : MonoBehaviour
         } else
         {
             Instantiate(Enemy2Prefab, Enemy2.position, Enemy2.rotation);
+            Instantiate(Enemy2Prefab, Enemy12.position, Enemy12.rotation);
+            Instantiate(Enemy2Prefab, Enemy13.position, Enemy13.rotation);
         }
     }
 

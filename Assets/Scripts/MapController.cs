@@ -25,6 +25,8 @@ public class MapController : MonoBehaviour
 
     private int mobCount = 0;
 
+    private int bossRoom = 3;
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -59,7 +61,7 @@ public class MapController : MonoBehaviour
 
         SceneManager.LoadScene("room" + startingScene);
         this.room++;
-        if (room > 2)
+        if (room > bossRoom)
         {
             NextFloor();
         }
@@ -79,7 +81,7 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (room != 2)
+        if (room != bossRoom)
         {
             int spawnCount = Random.Range(8, 13);
             for (int i = 0; i < spawnCount; i++)
