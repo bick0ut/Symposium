@@ -133,6 +133,15 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Weapon2Controller>().enabled = false;
         gameObject.GetComponent<Weapon3Controller>().enabled = false;
     }
+
+    public void LoseEnergy(float energy)
+    {
+        this.energy -= energy;
+        if (this.energy < 0)
+        {
+            this.energy = 0;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -204,6 +213,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        energy++;
+        if (energy > GetMaxEnergy())
+        {
+            energy = GetMaxEnergy();
+        }
         if (invulnerable)
         {
             sprite.enabled = !sprite.enabled;
