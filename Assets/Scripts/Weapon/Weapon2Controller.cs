@@ -15,13 +15,9 @@ public class Weapon2Controller : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && pc.GetEnergy() >= 10)
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-          /*  while (Input.GetMouseButtonDown(0))
-            {
-                pc.LoseEnergy(10);
-            }*/
         }
     }
 

@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         Instantiate(energyPrefab, transform);
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
-        menu = GameObject.FindWithTag("Menu");
         gui.GetComponent<GUI>().Show();
         moveSpeed = 4f;
         DontDestroyOnLoad(gameObject);
@@ -106,7 +105,6 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
-            menu.GetComponent<MenuButton>().Show();
             Destroy(gameObject);
         }
     }

@@ -46,6 +46,11 @@ public class Laser : MonoBehaviour
 
     private void FixedUpdate()
     {
+        player.GetComponent<PlayerController>().LoseEnergy(4);
+        if (player.GetComponent<PlayerController>().GetEnergy() == 0)
+        {
+            Destroy(gameObject);
+        }
         if (player == null)
         {
             Destroy(gameObject);
