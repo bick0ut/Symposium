@@ -1303,7 +1303,6 @@ MonoBehaviour:
   enemy3: {fileID: 4497339825768732935, guid: 69f2eab41cc36cd4b9bc8754bf1060ac, type: 3}
   boss1: {fileID: 2407139318948074631, guid: cb85a22674a8f374bbc89ca58c363466, type: 3}
   GUI: {fileID: 1067452544}
-  menu: {fileID: 1246972549}
 --- !u!4 &1017800086
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,9 +1474,10 @@ GameObject:
   - component: {fileID: 1246972552}
   - component: {fileID: 1246972551}
   - component: {fileID: 1246972550}
+  - component: {fileID: 1246972554}
   m_Layer: 5
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1562,6 +1562,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0039978027, y: -0.018005371}
   m_SizeDelta: {x: 21.751, y: 9.962}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1246972554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246972549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489a855c7da80104f9e1d75562591916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 293517462}
 --- !u!1 &1260112165
 GameObject:
   m_ObjectHideFlags: 0

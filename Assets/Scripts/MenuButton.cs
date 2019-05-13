@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour
 {
     public Button button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,13 @@ public class MenuButton : MonoBehaviour
 
     public void Show()
     {
+        gameObject.SetActive(true);
         button.gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+        button.gameObject.SetActive(false);
     }
 }

@@ -18,7 +18,6 @@ public class MapController : MonoBehaviour
     public GameObject boss1;
 
     public GameObject GUI;
-    public GameObject menu;
 
     private int floor = 1;
     private int room = 0;
@@ -30,7 +29,6 @@ public class MapController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(menu);
     }
 
     public int GetFloor()
@@ -125,10 +123,5 @@ public class MapController : MonoBehaviour
     public void SpawnPortal()
     {
         Instantiate(green, new Vector3(9, 0, 0), Quaternion.identity);
-    }
-
-    public void EnableMenu()
-    {
-        menu.SetActive(true);
     }
 }

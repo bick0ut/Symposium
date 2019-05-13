@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject map;
     private GameObject gui;
+    private GameObject menu;
 
     private float damage = 1;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         Instantiate(energyPrefab, transform);
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
+        menu = GameObject.FindWithTag("Menu");
         gui.GetComponent<GUI>().Show();
         moveSpeed = 4f;
         DontDestroyOnLoad(gameObject);
@@ -104,7 +106,7 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
-            map.GetComponent<MapController>().EnableMenu();
+            menu.GetComponent<MenuButton>().Show();
             Destroy(gameObject);
         }
     }

@@ -12,6 +12,7 @@ TagManager:
   - GUI
   - Health
   - Sword
+  - Menu
   layers:
   - Default
   - TransparentFX
