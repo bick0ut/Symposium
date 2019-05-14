@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4497339825768732928}
   - component: {fileID: 4497339825768732990}
   - component: {fileID: 4238525553328056654}
+  - component: {fileID: 6333792534848605691}
   m_Layer: 0
   m_Name: enemy2
   m_TagString: Enemy
@@ -203,3 +204,15 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3714490186810769856, guid: 3beaf474530ee0d4680a0bf686558093,
     type: 3}
   firePoint: {fileID: 7230117558953425045}
+--- !u!114 &6333792534848605691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497339825768732935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8485c8895a9279a4cabe9bcc8a63c5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,6 +12,11 @@ public class EnemyCreep : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.tag == "Shield")
+        {
+            Destroy(gameObject);
+        }
+
         PlayerController player = collision.GetComponent<PlayerController>();
 
         if (player != null)

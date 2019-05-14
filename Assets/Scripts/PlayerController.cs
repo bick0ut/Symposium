@@ -34,6 +34,13 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 4f;
         DontDestroyOnLoad(gameObject);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Shield")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {

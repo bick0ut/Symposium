@@ -15,24 +15,24 @@ public class Border : MonoBehaviour
     {
         float x = gameObject.transform.position.x;
         float y = gameObject.transform.position.y;
-        if (x < -10)
+        if (x < -11)
         {
-            gameObject.transform.position = new Vector3(-9.5f, y);
+            gameObject.transform.position = new Vector3(-10.5f, y);
         }
 
-        if (x > 10)
+        if (x > 11)
         {
-            gameObject.transform.position = new Vector3(9.5f, y);
+            gameObject.transform.position = new Vector3(10.5f, y);
         }
 
-         if (y < -3)
+         if (y < -4)
         {
-            gameObject.transform.position = new Vector3(x, -2.5f);
+            gameObject.transform.position = new Vector3(x, -3.5f);
         }
 
-        if (y > 4)
+        if (y > 5)
         {
-            gameObject.transform.position = new Vector3(x, 3.5f);
+            gameObject.transform.position = new Vector3(x, 4.5f);
         }
     }
 }
