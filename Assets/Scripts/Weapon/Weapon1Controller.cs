@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Weapon1Controller : MonoBehaviour
 {
+    private GameObject player;
+
     public Transform firePoint;
     public GameObject bulletPrefab;
 
     private bool cooldown = false;
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +23,11 @@ public class Weapon1Controller : MonoBehaviour
             Shoot();
             cooldown = true;
             Invoke("Cooldown", 1.0f);
+        }
+
+        if (Input.GetMouseButton(1) && player.GetComponent<PlayerController>().GetEnergy() >= 100)
+        {
+            BigShoot();
         }
     }
 
@@ -29,8 +40,18 @@ public class Weapon1Controller : MonoBehaviour
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, 30));
     }
 
+    void BigShoot()
+    {
+        player.GetComponent<PlayerController>().LoseEnergy(100);
+        for(int i = 0; i < 15; i++)
+        {
+            float x = Random.Range(-45, 46);
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, x));
+        }
+    }
     void Cooldown()
     {
         cooldown = false;
     }
+
 }

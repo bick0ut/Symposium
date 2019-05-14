@@ -17,12 +17,12 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Screen" || collision.tag == "Shield")
+        if(collision.tag == "Screen")
         {
             Destroy(gameObject);
         }
 
-        if (collision.tag == "Sword" && !flipped)
+        if (collision.tag == "Shield" && !flipped)
         {
 
             rb.velocity = -rb.velocity;

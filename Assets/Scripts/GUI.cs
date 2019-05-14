@@ -70,7 +70,11 @@ public class GUI : MonoBehaviour
         {
             w.SetActive(false);
         }
-        
+
+        if (weapon > 2 || weapon < 0)
+        {
+            weapon = 0;
+        }
         GameObject selected = (GameObject)WeaponList[weapon];
 
         selected.SetActive(true);
