@@ -23,7 +23,7 @@ public class Boss: MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Terrain")
+        if(collision.gameObject.tag == "Terrain" || collision.gameObject.tag == "Enemy")
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }   

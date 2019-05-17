@@ -42,7 +42,7 @@ public class Boss1AI : MonoBehaviour
         {
             cooldown = true;
             Invoke("Shoot", 0.5f);
-            Invoke("Cooldown", 10f);
+            Invoke("Cooldown", 5f);
         }
     }
 

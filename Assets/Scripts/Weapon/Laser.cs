@@ -17,14 +17,14 @@ public class Laser : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(0.1f);
+            enemy.TakeDamage(0.2f);
         }
 
         Boss boss = collision.GetComponent<Boss>();
 
         if (boss!= null)
         {
-            boss.TakeDamage(0.1f);
+            boss.TakeDamage(0.5f);
         }
     }
 
