@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public GameObject healthPrefab;
     private GameObject map;
 
+    public GameObject goldPrefab;
+
     public float damage;
     public float health = 10;
 
@@ -56,6 +58,12 @@ public class Enemy : MonoBehaviour
             {
                 Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
             }
+
+            if (Random.Range(0, 10) == 0)
+            {
+                Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
+            }
+
             map.GetComponent<MapController>().EnemyKilled();
             Destroy(gameObject);
         }

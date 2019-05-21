@@ -7,6 +7,8 @@ public class Boss: MonoBehaviour
     private GameObject map;
     private GameObject gui;
 
+    public GameObject goldPrefab;
+
     public float damage;
     public float health = 100;
     public float maxHealth = 100;
@@ -47,6 +49,7 @@ public class Boss: MonoBehaviour
     {
         if (alive)
         {
+            Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
             alive = false;
             gui.GetComponent<GUI>().HideBoss();
             map.GetComponent<MapController>().SpawnPortal();

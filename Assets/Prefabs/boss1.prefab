@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b2189f8d2a76d449399019fecce5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldPrefab: {fileID: 7563190864276121925, guid: 14ef6c2db18c05d409149e88f5b17cc5,
+    type: 3}
   damage: 2
   health: 100
   maxHealth: 100
