@@ -14,6 +14,7 @@ public class GUI : MonoBehaviour
     public GameObject canvas;
     public Text floorDisplay;
     public Text roomDisplay;
+    public Text goldDisplay;
 
     ArrayList WeaponList = new ArrayList();
 
@@ -84,6 +85,11 @@ public class GUI : MonoBehaviour
     public void UpdateRoom(int floor)
     {
         roomDisplay.text = "Room: " + floor;
+    }
+
+    public void UpdateGold(int gold)
+    {
+        goldDisplay.text = "Gold: " + gold;
     }
 
     public void ShowBoss()

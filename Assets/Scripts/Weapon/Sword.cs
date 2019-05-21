@@ -39,14 +39,14 @@ public class Sword : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(3);
+            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*3);
         }
 
         Boss boss= collision.GetComponent<Boss>();
 
         if (boss != null)
         {
-            boss.TakeDamage(3);
+            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*3);
         }
 
     }

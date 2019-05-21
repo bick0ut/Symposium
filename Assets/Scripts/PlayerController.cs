@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float energy = 100;
     private float maxEnergy = 100;
 
+    private int gold = 0;
+
     private GameObject map;
     private GameObject gui;
     private GameObject menu;
@@ -75,6 +77,13 @@ public class PlayerController : MonoBehaviour
             Heal(1);
             Destroy(collision.gameObject);
         }
+
+        if (collision.tag == "Gold")
+        {
+            ChangeGold(1);
+            gui.GetComponent<GUI>().UpdateGold(GetGold());
+            Destroy(collision.gameObject);
+        }
     }
 
     public float GetEnergy()
@@ -87,9 +96,24 @@ public class PlayerController : MonoBehaviour
         return maxEnergy;
     }
 
+    public int GetGold()
+    {
+        return this.gold;
+    }
+
+    public void ChangeGold(int change)
+    {
+        gold += change;
+    }
+
     public float GetDamage()
     {
         return this.damage;
+    }
+
+    public void IncreaseDamage(float inc)
+    {
+        this.damage += inc;
     }
     public void Heal(float heal)
     {

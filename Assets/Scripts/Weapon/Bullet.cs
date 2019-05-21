@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private GameObject player;
     public float moveSpeed = 20f;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         rb.velocity = transform.right * moveSpeed;
     }
 
@@ -24,7 +26,7 @@ public class Bullet : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(1);
+            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
             Destroy(gameObject);
         }
 
@@ -32,7 +34,7 @@ public class Bullet : MonoBehaviour
 
         if (boss!= null)
         {
-            boss.TakeDamage(1);
+            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
             Destroy(gameObject);
         }
     }
