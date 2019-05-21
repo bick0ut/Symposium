@@ -14,6 +14,7 @@ TagManager:
   - Sword
   - Menu
   - Shield
+  - Gold
   layers:
   - Default
   - TransparentFX
