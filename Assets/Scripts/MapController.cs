@@ -19,6 +19,8 @@ public class MapController : MonoBehaviour
 
     public GameObject GUI;
 
+    public GameObject shopPrefab;
+
     private int floor = 1;
     private int room = 0;
 
@@ -59,7 +61,7 @@ public class MapController : MonoBehaviour
 
         SceneManager.LoadScene("room" + startingScene);
         this.room++;
-        if (room > bossRoom)
+        if (room > bossRoom+1)
         {
             NextFloor();
         }
@@ -79,8 +81,12 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (room != bossRoom)
+        if (room == bossRoom + 1)
         {
+            mobCount = -1;
+            SpawnPortal();
+            Instantiate(shopPrefab, new Vector3(-5, 0, 0), Quaternion.identity);
+        } else if (room != bossRoom) {
             int spawnCount = Random.Range(8, 13);
             for (int i = 0; i < spawnCount; i++)
             {
@@ -102,8 +108,7 @@ public class MapController : MonoBehaviour
             }
 
             mobCount = spawnCount;
-        } else
-        {
+        } else {
             mobCount = -1;
             Instantiate(boss1, new Vector3(-5, 0, 0), Quaternion.identity);
         }

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private GameObject gui;
     private GameObject menu;
 
-    private float damage = 1;
+    public float damage = 1;
 
     private bool walking;
     private float moveSpeed;
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Gold")
         {
             ChangeGold(1);
-            gui.GetComponent<GUI>().UpdateGold(GetGold());
             Destroy(collision.gameObject);
         }
     }
@@ -104,6 +103,7 @@ public class PlayerController : MonoBehaviour
     public void ChangeGold(int change)
     {
         gold += change;
+        gui.GetComponent<GUI>().UpdateGold(GetGold());
     }
 
     public float GetDamage()
@@ -111,9 +111,9 @@ public class PlayerController : MonoBehaviour
         return this.damage;
     }
 
-    public void IncreaseDamage(float inc)
+    public void ChangeDamage(float change)
     {
-        this.damage += inc;
+        this.damage += change;
     }
     public void Heal(float heal)
     {
