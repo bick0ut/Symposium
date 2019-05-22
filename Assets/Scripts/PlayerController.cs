@@ -115,6 +115,12 @@ public class PlayerController : MonoBehaviour
     {
         this.damage += change;
     }
+
+    public void ChangeMaxHealth(float change)
+    {
+        this.maxHealth += change;
+        Heal(change);
+    }
     public void Heal(float heal)
     {
         health += heal;

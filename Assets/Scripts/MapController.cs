@@ -85,7 +85,7 @@ public class MapController : MonoBehaviour
         {
             mobCount = -1;
             SpawnPortal();
-            Instantiate(shopPrefab, new Vector3(-5, 0, 0), Quaternion.identity);
+            Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         } else if (room != bossRoom) {
             int spawnCount = Random.Range(8, 13);
             for (int i = 0; i < spawnCount; i++)

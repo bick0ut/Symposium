@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-public class DamageButton : MonoBehaviour
+public class HealthButton : MonoBehaviour
 {
     public Button button;
     private PlayerController pc;
@@ -24,7 +24,7 @@ public class DamageButton : MonoBehaviour
         PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= 10) {
             pc.ChangeGold(-10);
-            pc.ChangeDamage(0.1f);
+            pc.ChangeMaxHealth(1);
         }
     }
 }
