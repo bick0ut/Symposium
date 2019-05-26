@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3312143998825633467}
   - component: {fileID: 3594296595104992602}
   - component: {fileID: 9144745777065347301}
-  - component: {fileID: 7488470247147129380}
   - component: {fileID: 3312143998825633444}
   - component: {fileID: 3312143998825633445}
   - component: {fileID: 3722807700330758813}
@@ -173,26 +172,6 @@ MonoBehaviour:
     type: 3}
   shieldPrefab: {fileID: 4761110135220381205, guid: 9e4294e7d6ac78a4588e7b52bb26e2ca,
     type: 3}
---- !u!114 &7488470247147129380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3312143998825633442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610395c79e25e884c822b12460219da6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerToSpawn: {fileID: 0}
-  green: {fileID: 0}
-  enemy1: {fileID: 4497339825768732935, guid: 20f2b69f92aa03948af7e23b60644a70, type: 3}
-  enemy2: {fileID: 0}
-  enemy3: {fileID: 0}
-  boss1: {fileID: 0}
-  GUI: {fileID: 0}
-  shopPrefab: {fileID: 0}
 --- !u!50 &3312143998825633444
 Rigidbody2D:
   serializedVersion: 4

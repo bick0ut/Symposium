@@ -23,10 +23,12 @@ public class GUI : MonoBehaviour
     public GameObject weapon3;
 
     public Text stats;
+    public GameObject statsBg;
     private bool statsDisplay;
 
     private void Start()
     {
+        statsBg.SetActive(false);
         statsDisplay = true;
         DontDestroyOnLoad(gameObject);
         WeaponList.Add(weapon1);
@@ -39,9 +41,11 @@ public class GUI : MonoBehaviour
         if (statsDisplay)
         {
             stats.text = "";
+            statsBg.SetActive(false);
         } else
         {
             stats.text = "Max Health: " + hp + "\nMax Energy: " + energy + "%\nDamage: " + (int)(damage*100) + "%";
+            statsBg.SetActive(true);
         }
     }
 
