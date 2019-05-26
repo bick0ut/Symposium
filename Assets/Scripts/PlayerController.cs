@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject energyPrefab;
+    public GameObject menuPrefab;
 
     public Animator walk;
-    public Collider2D hitbox;
     public SpriteRenderer sprite;
 
     private float energy = 100;
@@ -26,6 +26,13 @@ public class PlayerController : MonoBehaviour
     private float health = 10;
     private float maxHealth = 10;
     private bool invulnerable = false;
+
+    private int dUpgrade = 0;
+    private int eUpgrade = 0;
+    private int hUpgrade = 0;
+
+    public AudioSource goldSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "Gold")
         {
+            goldSound.Play(0);
             ChangeGold(1);
             Destroy(collision.gameObject);
         }
@@ -87,14 +95,25 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeMovespeed(float change, float timer)
     {
-        this.moveSpeed += change;
-        Invoke("ResetSpeed", timer);
+        if (moveSpeed - change < 0)
+        {
+            change = moveSpeed;
+        }
+        this.moveSpeed -= change;
+        StartCoroutine(ReturnSpeed(change, timer));
+    }
+
+    IEnumerator ReturnSpeed(float change, float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        moveSpeed += change;
     }
 
     public void ResetSpeed()
     {
         this.moveSpeed = 4.0f;
     }
+
     public float GetEnergy()
     {
         return energy;
@@ -129,23 +148,43 @@ public class PlayerController : MonoBehaviour
     public void ChangeDamage(float change)
     {
         this.damage += change;
+        dUpgrade++;
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+    }
+
+    public int DUpgrade()
+    {
+        return dUpgrade;
     }
 
     public void ChangeMaxEnergy(float change)
     {
         this.maxEnergy += change;
+        eUpgrade++;
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
     }
+
+    public int EUpgrade()
+    {
+        return eUpgrade;
+    }
+
     public void ChangeMaxHealth(float change)
     {
         this.maxHealth += change;
         Heal(change);
+        hUpgrade++;
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
         gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
     }
+
+    public int HUpgrade()
+    {
+        return hUpgrade;
+    }
+
     public void Heal(float heal)
     {
         health += heal;
@@ -167,6 +206,7 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
+            Instantiate(menuPrefab);
             Destroy(gameObject);
         }
     }

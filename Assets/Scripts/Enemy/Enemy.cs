@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
+        health *= (1 + (map.GetComponent<MapController>().GetFloor() / 5) );
+        damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5) ) );
     }
 
     public void TakeDamage(float damage)

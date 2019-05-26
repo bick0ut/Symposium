@@ -12,8 +12,9 @@ public class HealthButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         button.onClick.AddListener(ClickStart);
-        cost = 1;
+        cost = 1 + 2*pc.HUpgrade();
         text.text = "+1 Max Health\nCost: " + cost;
     }
 
@@ -25,7 +26,6 @@ public class HealthButton : MonoBehaviour
 
     private void ClickStart()
     {
-        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
             pc.ChangeMaxHealth(1);

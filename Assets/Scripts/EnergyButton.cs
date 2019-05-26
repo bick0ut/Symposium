@@ -12,9 +12,10 @@ public class EnergyButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         button.onClick.AddListener(ClickStart);
-        cost = 5;
-        text.text = "+20% Max Energy\nCost: " + cost;
+        cost = 5 + 5*pc.EUpgrade();
+        text.text = "+25% Max Energy\nCost: " + cost;
     }
 
     // Update is called once per frame
@@ -25,12 +26,11 @@ public class EnergyButton : MonoBehaviour
 
     private void ClickStart()
     {
-        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
             pc.ChangeMaxEnergy(25.0f);
             cost += 5;
-            text.text = "+20% Max Energy\nCost: " + cost;
+            text.text = "+25% Max Energy\nCost: " + cost;
         }
     }
 }

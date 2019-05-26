@@ -12,8 +12,9 @@ public class DamageButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         button.onClick.AddListener(ClickStart);
-        cost = 2;
+        cost = 2 + 2*pc.DUpgrade();
         text.text = "+20% Damage\nCost: " + cost;
     }
 
@@ -25,7 +26,6 @@ public class DamageButton : MonoBehaviour
 
     private void ClickStart()
     {
-        PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
             pc.ChangeDamage(0.2f);

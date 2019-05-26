@@ -22,7 +22,7 @@ public class Weapon1Controller : MonoBehaviour
         {
             Shoot();
             cooldown = true;
-            Invoke("Cooldown", 1.0f);
+            Invoke("Cooldown", 0.3f);
         }
 
         if (Input.GetMouseButton(1) && player.GetComponent<PlayerController>().GetEnergy() >= 100)
@@ -33,11 +33,7 @@ public class Weapon1Controller : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, -30));
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, -15));
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, 15));
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, 30));
     }
 
     void BigShoot()
