@@ -10,14 +10,19 @@ public class Boss: MonoBehaviour
     public GameObject goldPrefab;
 
     public float damage;
-    public float health = 100;
-    public float maxHealth = 100;
+    public float health;
+    public float maxHealth;
 
     private bool alive = true;
 
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
+
+        maxHealth *= (1 + (map.GetComponent<MapController>().GetFloor() / 5));
+        health *= (1 + (map.GetComponent<MapController>().GetFloor() / 5));
+        damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5)));
+
         gui = GameObject.FindWithTag("GUI");
         gui.GetComponent<GUI>().ShowBoss();
         gui.GetComponent<GUI>().UpdateBossHP(health, maxHealth);
@@ -49,7 +54,10 @@ public class Boss: MonoBehaviour
     {
         if (alive)
         {
-            Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
+            for (int i = 0; i < map.GetComponent<MapController>().GetFloor(); i++)
+            {
+                Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
+            }
             alive = false;
             gui.GetComponent<GUI>().HideBoss();
             map.GetComponent<MapController>().SpawnPortal();

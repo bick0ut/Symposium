@@ -25,6 +25,7 @@ public class EnemyCreep : MonoBehaviour
             {
                 player.Invulnerable();
                 player.TakeDamage(1);
+                player.ChangeMovespeed(2, 2);
             }
         }
     }

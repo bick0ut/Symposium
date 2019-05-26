@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private int hUpgrade = 0;
 
     public AudioSource goldSound;
+    public AudioSource hitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -198,6 +199,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        hitSound.Play(0);
         health -= damage;
         if (health < 0)
         {

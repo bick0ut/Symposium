@@ -22,7 +22,7 @@ public class Weapon1Controller : MonoBehaviour
         {
             Shoot();
             cooldown = true;
-            Invoke("Cooldown", 0.3f);
+            Invoke("Cooldown", 0.2f);
         }
 
         if (Input.GetMouseButton(1) && player.GetComponent<PlayerController>().GetEnergy() >= 100)

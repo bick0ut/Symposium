@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rb.velocity = transform.right * moveSpeed;
+        Invoke("Die", 1.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,5 +38,10 @@ public class Bullet : MonoBehaviour
             boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
             Destroy(gameObject);
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
