@@ -110,7 +110,7 @@ public class MapController : MonoBehaviour
             mobCount = spawnCount;
         } else {
             mobCount = -1;
-            Instantiate(boss1, new Vector3(-5, 0, 0), Quaternion.identity);
+            Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
         }
 
     }

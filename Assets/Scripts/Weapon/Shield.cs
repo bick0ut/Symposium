@@ -38,7 +38,7 @@ public class Shield : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        player.GetComponent<PlayerController>().LoseEnergy(2);
+        player.GetComponent<PlayerController>().LoseEnergy(4);
         if (player.GetComponent<PlayerController>().GetEnergy() == 0)
         {
             Destroy(gameObject);

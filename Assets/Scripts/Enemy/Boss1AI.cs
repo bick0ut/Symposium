@@ -8,23 +8,20 @@ public class Boss1AI : MonoBehaviour
     private GameObject Player;
     private float moveSpeed;
 
-    public GameObject Enemy1Prefab;
-    public GameObject Enemy2Prefab;
+    public GameObject JavelinPrefab;
 
-    public Transform Enemy11;
-    public Transform Enemy12;
-    public Transform Enemy13;
-    public Transform Enemy2;
+    public Transform firePoint;
 
     private bool cooldown;
-    private bool alt;
+    private bool walking;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 1.0f;
+        moveSpeed = 1.5f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
+        walking = true;
     }
 
     // Update is called once per frame
@@ -36,32 +33,54 @@ public class Boss1AI : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
         }
 
-        transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
+        if (walking)
+        {
+            transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
+        }
 
         if (!cooldown)
         {
+            walking = false;
             cooldown = true;
-            Invoke("Shoot", 0.5f);
+            Attack();
             Invoke("Cooldown", 5f);
         }
     }
 
-    void Shoot()
+    void Attack()
     {
-        alt = !alt;
-        if (alt)
-        {
-            Instantiate(Enemy1Prefab, Enemy11.position, Enemy11.rotation);
-            Instantiate(Enemy1Prefab, Enemy12.position, Enemy12.rotation);
-            Instantiate(Enemy1Prefab, Enemy13.position, Enemy13.rotation);
-        } else
-        {
-            Instantiate(Enemy2Prefab, Enemy2.position, Enemy2.rotation);
-            Instantiate(Enemy2Prefab, Enemy12.position, Enemy12.rotation);
-            Instantiate(Enemy2Prefab, Enemy13.position, Enemy13.rotation);
-        }
+        Invoke("Shoot", 0.2f);
+        Invoke("Shoot", 0.4f);
+        Invoke("Shoot", 0.6f);
+        Invoke("Shoot", 0.8f);
+        Invoke("Shoot", 1.0f);
+        Invoke("Shoot", 1.2f);
+        Invoke("Shoot", 1.4f);
+        Invoke("Shoot", 1.6f);
+        Invoke("Shoot", 1.8f);
+        Invoke("Shoot", 2.0f);
+        Invoke("WideShoot", 2.2f);
+        Invoke("Walk", 2.2f);
     }
 
+    void Shoot()
+    {
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void WideShoot()
+    {
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-32,-28)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-17,-13)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(13,17)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(28,32)));
+    }
+
+    void Walk()
+    {
+        walking = true;
+    }
     void Cooldown()
     {
         cooldown = false;

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-public class DamageButton : MonoBehaviour
+public class EnergyButton : MonoBehaviour
 {
     public Button button;
     public Text text;
@@ -13,8 +13,8 @@ public class DamageButton : MonoBehaviour
     void Start()
     {
         button.onClick.AddListener(ClickStart);
-        cost = 2;
-        text.text = "+20% Damage\nCost: " + cost;
+        cost = 5;
+        text.text = "+20% Max Energy\nCost: " + cost;
     }
 
     // Update is called once per frame
@@ -28,9 +28,9 @@ public class DamageButton : MonoBehaviour
         PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
-            pc.ChangeDamage(0.1f);
-            cost += 2;
-            text.text = "+20% Damage\nCost: " + cost;
+            pc.ChangeMaxEnergy(25.0f);
+            cost += 5;
+            text.text = "+20% Max Energy\nCost: " + cost;
         }
     }
 }

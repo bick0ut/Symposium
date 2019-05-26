@@ -116,6 +116,10 @@ public class PlayerController : MonoBehaviour
         this.damage += change;
     }
 
+    public void ChangeMaxEnergy(float change)
+    {
+        this.maxEnergy += change;
+    }
     public void ChangeMaxHealth(float change)
     {
         this.maxHealth += change;

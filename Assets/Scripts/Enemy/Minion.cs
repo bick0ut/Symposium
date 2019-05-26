@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Minion : MonoBehaviour
 {
-    public GameObject healthPrefab;
     private GameObject map;
-
-    public GameObject goldPrefab;
 
     public float damage;
     public float health;
@@ -53,18 +50,6 @@ public class Enemy : MonoBehaviour
                 enemy3.Explode();
             }
 
-            alive = false;
-            if (Random.Range(0, 10) == 0)
-            {
-                Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
-            }
-
-            if (Random.Range(0, 10) == 0)
-            {
-                Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
-            }
-
-            map.GetComponent<MapController>().EnemyKilled();
             Destroy(gameObject);
         }
     }

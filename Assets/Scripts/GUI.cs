@@ -89,7 +89,7 @@ public class GUI : MonoBehaviour
 
     public void UpdateGold(int gold)
     {
-        goldDisplay.text = "Gold: " + gold;
+        goldDisplay.text = "" + gold;
     }
 
     public void ShowBoss()
