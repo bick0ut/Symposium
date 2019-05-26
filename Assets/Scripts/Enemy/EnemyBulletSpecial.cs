@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBulletSpecial : MonoBehaviour
 {
     public float moveSpeed;
     public Rigidbody2D rb;
     public float damage;
+    public float change;
+    public float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,20 +23,12 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.tag == "Shield")
-        {
-            Destroy(gameObject);
-        }
-
         PlayerController player = collision.GetComponent<PlayerController>();
 
         if (player != null)
         {
-            if (!player.IsInvulnerable())
-            {
-                player.Invulnerable();
-                player.TakeDamage(damage);
-            }
+            player.ChangeMovespeed(change, timer);
+            player.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

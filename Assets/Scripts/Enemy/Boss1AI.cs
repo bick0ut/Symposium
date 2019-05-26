@@ -9,15 +9,18 @@ public class Boss1AI : MonoBehaviour
     private float moveSpeed;
 
     public GameObject JavelinPrefab;
+    public GameObject NetPrefab;
 
     public Transform firePoint;
 
     private bool cooldown;
     private bool walking;
+    private bool alt;
 
     // Start is called before the first frame update
     void Start()
     {
+        alt = true;
         moveSpeed = 1.5f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
@@ -43,24 +46,33 @@ public class Boss1AI : MonoBehaviour
             walking = false;
             cooldown = true;
             Attack();
-            Invoke("Cooldown", 5f);
+            Invoke("Cooldown", 4f);
         }
     }
 
     void Attack()
     {
-        Invoke("Shoot", 0.2f);
-        Invoke("Shoot", 0.4f);
-        Invoke("Shoot", 0.6f);
-        Invoke("Shoot", 0.8f);
-        Invoke("Shoot", 1.0f);
-        Invoke("Shoot", 1.2f);
-        Invoke("Shoot", 1.4f);
-        Invoke("Shoot", 1.6f);
-        Invoke("Shoot", 1.8f);
-        Invoke("Shoot", 2.0f);
-        Invoke("WideShoot", 2.2f);
-        Invoke("Walk", 2.2f);
+        alt = !alt;
+        if (alt)
+        {
+            Invoke("Shoot", 0.2f);
+            Invoke("Shoot", 0.4f);
+            Invoke("Shoot", 0.6f);
+            Invoke("Shoot", 0.8f);
+            Invoke("Shoot", 1.0f);
+            Invoke("Shoot", 1.2f);
+            Invoke("Shoot", 1.4f);
+            Invoke("Shoot", 1.6f);
+            Invoke("Shoot", 1.8f);
+            Invoke("Shoot", 2.0f);
+            Invoke("WideShoot", 2.2f);
+            Invoke("Walk", 2.2f);
+        }
+        else
+        {
+            Instantiate(NetPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-15, 16)));
+            Invoke("Walk", 1.0f);
+        }
     }
 
     void Shoot()
@@ -70,11 +82,11 @@ public class Boss1AI : MonoBehaviour
 
     void WideShoot()
     {
-        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-32,-28)));
-        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-17,-13)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-32,-27)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-17,-12)));
         Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation);
-        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(13,17)));
-        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(28,32)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(13,18)));
+        Instantiate(JavelinPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(28,33)));
     }
 
     void Walk()

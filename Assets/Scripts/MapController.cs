@@ -81,36 +81,78 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (room == bossRoom + 1)
+        if (floor % 3 == 1)
         {
-            mobCount = -1;
-            SpawnPortal();
-            Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        } else if (room != bossRoom) {
-            int spawnCount = Random.Range(8, 13);
-            for (int i = 0; i < spawnCount; i++)
+            if (room == bossRoom + 1)
             {
-                int xRange = Random.Range(-5, 10);
-                int yRange = Random.Range(-3, 4);
-
-                int rando = Random.Range(0, 3);
-                if (rando == 1)
-                {
-                    Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
-                }
-                else if(rando == 2) 
-                {
-                    Instantiate(enemy2, new Vector3(xRange, yRange, 0), Quaternion.identity);
-                } else
-                {
-                    Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
-                }
+                mobCount = -1;
+                SpawnPortal();
+                Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             }
+            else if (room != bossRoom)
+            {
+                int spawnCount = Random.Range(8, 13);
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    int xRange = Random.Range(-5, 10);
+                    int yRange = Random.Range(-3, 4);
 
-            mobCount = spawnCount;
-        } else {
-            mobCount = -1;
-            Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
+                    int rando = Random.Range(0, 2);
+                    if (rando == 1)
+                    {
+                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(enemy2, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                }
+
+                mobCount = spawnCount;
+            }
+            else
+            {
+                mobCount = -1;
+                Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+        } else if (floor % 3 == 2)
+        {
+            if (room == bossRoom + 1)
+            {
+                mobCount = -1;
+                SpawnPortal();
+                Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            else if (room != bossRoom)
+            {
+                int spawnCount = Random.Range(8, 13);
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    int xRange = Random.Range(-5, 10);
+                    int yRange = Random.Range(-3, 4);
+
+                    int rando = Random.Range(0, 3);
+                    if (rando == 1)
+                    {
+                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                    else if (rando == 2)
+                    {
+                        Instantiate(enemy2, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                }
+
+                mobCount = spawnCount;
+            }
+            else
+            {
+                mobCount = -1;
+                Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
+            }
         }
 
     }

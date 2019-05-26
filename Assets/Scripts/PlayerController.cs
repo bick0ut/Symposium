@@ -85,6 +85,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ChangeMovespeed(float change, float timer)
+    {
+        this.moveSpeed += change;
+        Invoke("ResetSpeed", timer);
+    }
+
+    public void ResetSpeed()
+    {
+        this.moveSpeed = 4.0f;
+    }
     public float GetEnergy()
     {
         return energy;

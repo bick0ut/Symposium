@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77eb850258d1c7499c065b39768e32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Minion1Prefab: {fileID: 4497339825768732935, guid: 0f269c076b6f1014faef55c8b41e95d1,
-    type: 3}
   JavelinPrefab: {fileID: 5334707322053532717, guid: 0646021dc03d8874b938416137a9bf3e,
+    type: 3}
+  NetPrefab: {fileID: 1950332276181423146, guid: 4baa404b9b3d6194dbe75018d25fb18a,
     type: 3}
   firePoint: {fileID: 7128063411316170894}
 --- !u!114 &4270044110030768716
