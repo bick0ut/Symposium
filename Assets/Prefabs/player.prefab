@@ -125,6 +125,7 @@ MonoBehaviour:
   walk: {fileID: 3312143998825633446}
   hitbox: {fileID: 0}
   sprite: {fileID: 3312143998825633440}
+  damage: 50
 --- !u!114 &3312143998825633467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ MonoBehaviour:
   enemy3: {fileID: 0}
   boss1: {fileID: 0}
   GUI: {fileID: 0}
+  shopPrefab: {fileID: 0}
 --- !u!50 &3312143998825633444
 Rigidbody2D:
   serializedVersion: 4

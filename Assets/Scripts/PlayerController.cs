@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private GameObject gui;
     private GameObject menu;
 
-    public float damage = 1;
+    public float damage;
 
     private bool walking;
     private float moveSpeed;
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage());
         }
