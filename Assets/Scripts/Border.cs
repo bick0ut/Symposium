@@ -15,9 +15,9 @@ public class Border : MonoBehaviour
     {
         float x = gameObject.transform.position.x;
         float y = gameObject.transform.position.y;
-        if (x < -11)
+        if (x < -10.5f)
         {
-            gameObject.transform.position = new Vector3(-10.5f, y);
+            gameObject.transform.position = new Vector3(-10.0f, y);
         }
 
         if (x > 11)

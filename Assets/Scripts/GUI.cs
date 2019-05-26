@@ -22,14 +22,27 @@ public class GUI : MonoBehaviour
     public GameObject weapon2;
     public GameObject weapon3;
 
-
+    public Text stats;
+    private bool statsDisplay;
 
     private void Start()
     {
+        statsDisplay = true;
         DontDestroyOnLoad(gameObject);
         WeaponList.Add(weapon1);
         WeaponList.Add(weapon2);
         WeaponList.Add(weapon3);
+    }
+
+    public void StatsDisplay(float hp, float energy, float damage) {
+        statsDisplay = !statsDisplay;
+        if (statsDisplay)
+        {
+            stats.text = "";
+        } else
+        {
+            stats.text = "Max Health: " + hp + "\nMax Energy: " + energy + "%\nDamage: " + (int)(damage*100) + "%";
+        }
     }
 
     public void UpdateHP(float health, float maxHealth)

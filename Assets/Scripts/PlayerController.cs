@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
         return maxEnergy;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public int GetGold()
     {
         return this.gold;
@@ -114,16 +119,22 @@ public class PlayerController : MonoBehaviour
     public void ChangeDamage(float change)
     {
         this.damage += change;
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
     }
 
     public void ChangeMaxEnergy(float change)
     {
         this.maxEnergy += change;
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
     }
     public void ChangeMaxHealth(float change)
     {
         this.maxHealth += change;
         Heal(change);
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
     }
     public void Heal(float heal)
     {
@@ -189,6 +200,11 @@ public class PlayerController : MonoBehaviour
         float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage());
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

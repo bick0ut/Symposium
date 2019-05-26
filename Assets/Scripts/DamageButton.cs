@@ -28,7 +28,7 @@ public class DamageButton : MonoBehaviour
         PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
-            pc.ChangeDamage(0.1f);
+            pc.ChangeDamage(0.2f);
             cost += 2;
             text.text = "+20% Damage\nCost: " + cost;
         }
