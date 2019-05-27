@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource goldSound;
     public AudioSource hitSound;
+    public AudioSource healSound;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
          if (collision.tag == "Health")
         {
+            healSound.Play(0);
             Heal(1);
             Destroy(collision.gameObject);
         }

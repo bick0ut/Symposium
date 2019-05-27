@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyCreepV : MonoBehaviour
 {
+    private GameObject map;
+    public float damage;
     public Rigidbody2D rb;
     public float moveSpeed = 2f;
 
@@ -29,7 +31,7 @@ public class EnemyCreepV : MonoBehaviour
             if (!player.IsInvulnerable())
             {
                 player.Invulnerable();
-                player.TakeDamage(1);
+                player.TakeDamage(damage);
                 player.ChangeMovespeed(2, 2);
             }
         }

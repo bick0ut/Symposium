@@ -82,7 +82,7 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (floor % 3 == 1)
+        if (floor % 5 == 1)
         {
             if (room == bossRoom + 1)
             {
@@ -116,7 +116,7 @@ public class MapController : MonoBehaviour
                 mobCount = -1;
                 Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
             }
-        } else if (floor % 3 == 2)
+        } else if (floor % 5 == 2)
         {
             if (room == bossRoom + 1)
             {

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    private GameObject map;
+    public float damage;
     public float moveSpeed;
     public Rigidbody2D rb;
-    public float damage;
 
     // Start is called before the first frame update
     void Start()
     {
+        map = GameObject.FindWithTag("Map");
+        damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5)));
         rb.velocity = transform.right * moveSpeed;
     }
 

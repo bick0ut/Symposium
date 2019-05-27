@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyCreep : MonoBehaviour
 {
+    private GameObject map;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
+        map = GameObject.FindWithTag("Map");
+        damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5)));
         Invoke("Die", 5f);
     }
 
@@ -24,7 +28,7 @@ public class EnemyCreep : MonoBehaviour
             if (!player.IsInvulnerable())
             {
                 player.Invulnerable();
-                player.TakeDamage(1);
+                player.TakeDamage(damage);
                 player.ChangeMovespeed(2, 2);
             }
         }
