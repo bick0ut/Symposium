@@ -37,6 +37,13 @@ public class Boss: MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        Boss2AI boss2 = gameObject.GetComponent<Boss2AI>();
+
+        if (boss2 != null)
+        {
+            boss2.Explode();
+        }
+
         health -= damage;
 
         gui.GetComponent<GUI>().UpdateBossHP(health, maxHealth);

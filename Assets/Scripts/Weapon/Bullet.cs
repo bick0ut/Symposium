@@ -31,6 +31,14 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Minion minion = collision.GetComponent<Minion>();
+
+        if (minion != null)
+        {
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+            Destroy(gameObject);
+        }
+
         Boss boss = collision.GetComponent<Boss>();
 
         if (boss!= null)

@@ -17,6 +17,7 @@ public class MapController : MonoBehaviour
     public GameObject enemy4;
 
     public GameObject boss1;
+    public GameObject boss2;
 
     public GameObject GUI;
 
@@ -152,7 +153,7 @@ public class MapController : MonoBehaviour
             else
             {
                 mobCount = -1;
-                Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(boss2, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
 

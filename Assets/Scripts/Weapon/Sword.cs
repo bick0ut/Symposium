@@ -42,7 +42,15 @@ public class Sword : MonoBehaviour
             enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*3);
         }
 
-        Boss boss= collision.GetComponent<Boss>();
+        Minion minion = collision.GetComponent<Minion>();
+
+        if (minion != null)
+        {
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+            Destroy(gameObject);
+        }
+
+        Boss boss = collision.GetComponent<Boss>();
 
         if (boss != null)
         {
