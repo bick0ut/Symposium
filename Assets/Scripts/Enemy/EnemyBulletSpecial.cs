@@ -26,6 +26,11 @@ public class EnemyBulletSpecial : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (collision.tag == "Shield")
+        {
+            Destroy(gameObject);
+        }
+
         PlayerController player = collision.GetComponent<PlayerController>();
 
         if (player != null)

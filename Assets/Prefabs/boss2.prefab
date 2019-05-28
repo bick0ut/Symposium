@@ -150,8 +150,8 @@ MonoBehaviour:
   goldPrefab: {fileID: 7563190864276121925, guid: 14ef6c2db18c05d409149e88f5b17cc5,
     type: 3}
   damage: 2
-  health: 250
-  maxHealth: 250
+  health: 150
+  maxHealth: 150
 --- !u!114 &7126279298895714013
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource hitSound;
     public AudioSource healSound;
 
+    private int weaponIndex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -255,6 +257,45 @@ public class PlayerController : MonoBehaviour
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f && weaponIndex!=2)
+        {
+            weaponIndex++;
+            gui.GetComponent<GUI>().ChangeWeapon(weaponIndex);
+            DisableWeapons();
+
+            if (weaponIndex == 0)
+            {
+                gameObject.GetComponent<Weapon1Controller>().enabled = true;
+            } else if(weaponIndex == 1)
+            {
+                gameObject.GetComponent<Weapon2Controller>().enabled = true;
+            }
+            else
+            {
+                gameObject.GetComponent<Weapon3Controller>().enabled = true;
+            }
+        }
+
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f && weaponIndex!=0)
+        {
+            weaponIndex--;
+            gui.GetComponent<GUI>().ChangeWeapon(weaponIndex);
+            DisableWeapons();
+
+            if (weaponIndex == 0)
+            {
+                gameObject.GetComponent<Weapon1Controller>().enabled = true;
+            } else if(weaponIndex == 1)
+            {
+                gameObject.GetComponent<Weapon2Controller>().enabled = true;
+            }
+            else
+            {
+                gameObject.GetComponent<Weapon3Controller>().enabled = true;
+            }
+        }
+
+
         if (Input.GetKeyUp(KeyCode.Q))
         {
             gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage());
@@ -264,6 +305,7 @@ public class PlayerController : MonoBehaviour
         {
             gui.GetComponent<GUI>().ChangeWeapon(0);
             DisableWeapons();
+            weaponIndex = 0;
 
             gameObject.GetComponent<Weapon1Controller>().enabled = true;
         }
@@ -272,6 +314,7 @@ public class PlayerController : MonoBehaviour
         {
             gui.GetComponent<GUI>().ChangeWeapon(1);
             DisableWeapons();
+            weaponIndex = 1;
 
             gameObject.GetComponent<Weapon2Controller>().enabled = true;
         }
@@ -280,6 +323,7 @@ public class PlayerController : MonoBehaviour
         {
             gui.GetComponent<GUI>().ChangeWeapon(2);
             DisableWeapons();
+            weaponIndex = 2;
 
             gameObject.GetComponent<Weapon3Controller>().enabled = true;
         }

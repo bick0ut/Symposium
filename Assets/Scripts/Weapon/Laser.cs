@@ -6,9 +6,10 @@ public class Laser : MonoBehaviour
 {
     private GameObject player;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         player = GameObject.FindWithTag("Player");
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -33,7 +34,7 @@ public class Laser : MonoBehaviour
 
         if (boss!= null)
         {
-            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.6f);
+            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.3f);
         }
     }
 
@@ -55,7 +56,8 @@ public class Laser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        player.GetComponent<PlayerController>().LoseEnergy(4);
+        transform.localScale += new Vector3(1.0f, 0, 0);
+        player.GetComponent<PlayerController>().LoseEnergy(2);
         if (player.GetComponent<PlayerController>().GetEnergy() == 0)
         {
             Destroy(gameObject);
