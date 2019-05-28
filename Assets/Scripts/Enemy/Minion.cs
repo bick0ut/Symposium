@@ -5,11 +5,18 @@ using UnityEngine;
 public class Minion : MonoBehaviour
 {
     private GameObject map;
+    private GameObject boss;
 
     public float damage;
     public float health;
 
     private bool alive = true;
+
+    private void Awake()
+    {
+        boss = GameObject.FindWithTag("Boss");
+        Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    }
 
     private void Start()
     {
