@@ -45,7 +45,8 @@ public class Boss3Sword : MonoBehaviour
         if (player != null)
         {
             if (!player.IsInvulnerable())
-            { 
+            {
+                player.Invulnerable();
                 player.TakeDamage(damage);
             }
         }

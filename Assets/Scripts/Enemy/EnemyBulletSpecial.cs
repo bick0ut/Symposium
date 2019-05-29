@@ -37,6 +37,7 @@ public class EnemyBulletSpecial : MonoBehaviour
         {
             if (!player.IsInvulnerable())
             {
+                player.Invulnerable();
                 player.TakeDamage(damage);
             }
             player.ChangeMovespeed(change, timer);

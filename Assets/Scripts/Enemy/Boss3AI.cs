@@ -57,7 +57,7 @@ public class Boss3AI : MonoBehaviour
     void Attack()
     {
         original = transform.position;
-        Vector3 playerPos = Player.transform.position - (Player.transform.forward * -5f );
+        Vector3 playerPos = Player.transform.position - (Player.transform.forward * 5 );
         transform.position = playerPos;
         Invoke("Shoot", 0.5f);
         Invoke("Reset", 1.0f);
