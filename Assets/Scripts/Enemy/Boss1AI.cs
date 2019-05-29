@@ -8,6 +8,7 @@ public class Boss1AI : MonoBehaviour
     private GameObject Player;
     private float moveSpeed;
 
+    public Animator walk;
     public GameObject JavelinPrefab;
     public GameObject NetPrefab;
 
@@ -44,6 +45,7 @@ public class Boss1AI : MonoBehaviour
         if (!cooldown)
         {
             walking = false;
+            walk.enabled = false;
             cooldown = true;
             Attack();
             Invoke("Cooldown", 4f);
@@ -92,6 +94,7 @@ public class Boss1AI : MonoBehaviour
     void Walk()
     {
         walking = true;
+        walk.enabled = true;
     }
     void Cooldown()
     {

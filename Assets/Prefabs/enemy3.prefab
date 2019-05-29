@@ -174,7 +174,7 @@ MonoBehaviour:
   goldPrefab: {fileID: 7563190864276121925, guid: 14ef6c2db18c05d409149e88f5b17cc5,
     type: 3}
   damage: 2
-  health: 25
+  health: 14
 --- !u!114 &3600789272211224962
 MonoBehaviour:
   m_ObjectHideFlags: 0

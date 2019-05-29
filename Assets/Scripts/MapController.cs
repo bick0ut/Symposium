@@ -18,6 +18,7 @@ public class MapController : MonoBehaviour
 
     public GameObject boss1;
     public GameObject boss2;
+    public GameObject boss3;
 
     public GameObject GUI;
 
@@ -28,7 +29,7 @@ public class MapController : MonoBehaviour
 
     private int mobCount = 0;
 
-    private int bossRoom = 3;
+    private int bossRoom = 1;
 
     void Start()
     {
@@ -115,7 +116,7 @@ public class MapController : MonoBehaviour
             else
             {
                 mobCount = -1;
-                Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
             }
         } else if (floor % 5 == 2)
         {

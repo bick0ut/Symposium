@@ -15,17 +15,15 @@ public class Boss2AI : MonoBehaviour
 
     private bool cooldown;
     private bool ecooldown;
-    private bool walking;
 
     // Start is called before the first frame update
     void Start()
     {
         ecooldown = false;
         cooldown = false;
-        moveSpeed = 1.0f;
+        moveSpeed = 1.25f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
-        walking = true;
     }
 
     // Update is called once per frame
@@ -37,24 +35,19 @@ public class Boss2AI : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
         }
 
-        if (walking)
-        {
-            transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
-        }
+        transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
 
         if (!cooldown)
         {
-            walking = false;
             cooldown = true;
             Attack();
-            Invoke("Cooldown", 6f);
+            Invoke("Cooldown", 3.5f);
         }
     }
 
     void Attack()
     {
         Invoke("Shoot", 0.5f);
-        Invoke("Walk", 1.0f);
     }
 
     void Shoot()
@@ -62,10 +55,6 @@ public class Boss2AI : MonoBehaviour
         Instantiate(WallPrefab, firePoint.position, firePoint.rotation);
     }
 
-    void Walk()
-    {
-        walking = true;
-    }
     void Cooldown()
     {
         cooldown = false;
