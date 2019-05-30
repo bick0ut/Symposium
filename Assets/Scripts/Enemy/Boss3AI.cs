@@ -9,31 +9,35 @@ public class Boss3AI : MonoBehaviour
     private float moveSpeed;
 
     public GameObject SwordPrefab;
-    public GameObject WallPrefab;
+    public GameObject WarningPrefab;
 
     public Transform firePoint;
 
     private bool acooldown;
-    private bool bcooldown;
     private bool walking;
-    private bool attacking;
-    private bool blocking;
-    private Vector3 original;
+    private Vector3 playerPos;
+
+    public AudioSource teleportSound;
+
+    private Boss boss;
+    private float rage;
 
     // Start is called before the first frame update
     void Start()
     {
-        acooldown = false;
-        bcooldown = false;
-        moveSpeed = 1.0f;
+        acooldown = true;
+        Invoke("ACooldown", 4f);
+        moveSpeed = 1.25f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
         walking = true;
+        boss = GetComponent<Boss>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        rage = 1.5f - (boss.GetHealth() / boss.GetMaxHealth());
         if (Player != null) {
             float AngleRad = Mathf.Atan2(Player.transform.position.y - transform.position.y, Player.transform.position.x - transform.position.x);
             float AngleDeg = (180 / Mathf.PI) * AngleRad;
@@ -45,37 +49,55 @@ public class Boss3AI : MonoBehaviour
             transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
         }
 
-        if (!acooldown && !blocking)
+        if (!acooldown)
         {
             acooldown = true;
             walking = false;
             Attack();
-            Invoke("ACooldown", 6f);
+            Invoke("ACooldown", 8.25f - (5*rage));
         }
     }
 
     void Attack()
     {
-        original = transform.position;
-        Vector3 playerPos = Player.transform.position - (Player.transform.forward * 5 );
-        transform.position = playerPos;
+        playerPos = Player.transform.position;
+        int rand = Random.Range(0, 8);
+        if (rand == 0)
+        {
+            playerPos += new Vector3(0, 2f);
+        } else if (rand == 1)
+        {
+            playerPos += new Vector3(1.5f, 1.5f);
+        } else if (rand == 2)
+        {
+            playerPos += new Vector3(2f, 0);
+        } else if (rand == 3)
+        {
+            playerPos += new Vector3(1.5f, -1.5f);
+        } else if (rand == 4)
+        {
+            playerPos += new Vector3(0, -2f);
+        } else if (rand == 5)
+        {
+            playerPos += new Vector3(-1.5f, -1.5f);
+        } else if (rand == 6)
+        {
+            playerPos += new Vector3(-2f, 0);
+        } else
+        {
+            playerPos += new Vector3(-1.5f, 1.5f);
+        }
+        Instantiate(WarningPrefab, playerPos, Quaternion.identity);
+
         Invoke("Shoot", 0.5f);
-        Invoke("Reset", 1.0f);
         Invoke("Walk", 1.0f);
     }
 
-    private void Reset()
-    {
-        transform.position = original;
-    }
     void Shoot()
     {
+        transform.position = playerPos;
+        teleportSound.Play(0);
         Instantiate(SwordPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, -90));
-    }
-
-    void Block()
-    {
-        Instantiate(WallPrefab, firePoint.position, firePoint.rotation);
     }
 
     void Walk()
@@ -87,10 +109,4 @@ public class Boss3AI : MonoBehaviour
     {
         acooldown = false;
     }
-
-    void Bcooldown()
-    {
-        bcooldown = false;
-    }
-
 }

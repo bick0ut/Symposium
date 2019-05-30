@@ -156,6 +156,44 @@ public class MapController : MonoBehaviour
                 mobCount = -1;
                 Instantiate(boss2, new Vector3(0, 0, 0), Quaternion.identity);
             }
+        }else if (floor % 5 == 3)
+        {
+            if (room == bossRoom + 1)
+            {
+                mobCount = -1;
+                SpawnPortal();
+                Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            else if (room != bossRoom)
+            {
+                int spawnCount = Random.Range(8, 13);
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    int xRange = Random.Range(-5, 10);
+                    int yRange = Random.Range(-3, 4);
+
+                    int rando = Random.Range(0, 4);
+                    if (rando == 0)
+                    {
+                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                    else if (rando == 1)
+                    {
+                        Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(enemy4, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                    }
+                }
+
+                mobCount = spawnCount;
+            }
+            else
+            {
+                mobCount = -1;
+                Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
+            }
         }
 
     }

@@ -52,7 +52,14 @@ public class Boss: MonoBehaviour
             Die();
         }
     }
-
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public float GetHealth()
+    {
+        return health;
+    }
     public float GetDamage()
     {
         return damage;

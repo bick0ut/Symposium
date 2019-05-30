@@ -26,7 +26,6 @@ public class Laser : MonoBehaviour
         if (minion != null)
         {
             minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
-            Destroy(gameObject);
         }
 
 
