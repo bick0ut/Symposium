@@ -54,7 +54,7 @@ public class Boss3AI : MonoBehaviour
             acooldown = true;
             walking = false;
             Attack();
-            Invoke("ACooldown", 8.25f - (5*rage));
+            Invoke("ACooldown", 6.5f - (4*rage));
         }
     }
 
@@ -89,7 +89,7 @@ public class Boss3AI : MonoBehaviour
         }
         Instantiate(WarningPrefab, playerPos, Quaternion.identity);
 
-        Invoke("Shoot", 0.5f);
+        Invoke("Shoot", 0.6f);
         Invoke("Walk", 1.0f);
     }
 

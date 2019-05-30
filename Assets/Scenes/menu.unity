@@ -1762,7 +1762,7 @@ MonoBehaviour:
   enemy4: {fileID: 4497339825768732935, guid: 3975be0b0d23cf5499f36651fb462557, type: 3}
   boss1: {fileID: 2407139318948074631, guid: cb85a22674a8f374bbc89ca58c363466, type: 3}
   boss2: {fileID: 2407139318948074631, guid: 5757b90124a58d44f8be96942c07b090, type: 3}
-  boss3: {fileID: 0}
+  boss3: {fileID: 2407139318948074631, guid: d3100d9a11ba39f4484a845fbefddd3e, type: 3}
   GUI: {fileID: 1067452544}
   shopPrefab: {fileID: 1990306586048202613, guid: e2a7e44cf41b0114fb0741a1dc0e87e3,
     type: 3}
