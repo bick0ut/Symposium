@@ -15,6 +15,7 @@ public class MapController : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemy4;
+    public GameObject enemy5;
 
     public GameObject boss1;
     public GameObject boss2;
@@ -29,7 +30,7 @@ public class MapController : MonoBehaviour
 
     private int mobCount = 0;
 
-    private int bossRoom = 1;
+    private int bossRoom = 3;
 
     void Start()
     {
@@ -103,7 +104,7 @@ public class MapController : MonoBehaviour
                     int rando = Random.Range(0, 2);
                     if (rando == 0)
                     {
-                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                        Instantiate(enemy5, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
                     else
                     {
@@ -116,7 +117,7 @@ public class MapController : MonoBehaviour
             else
             {
                 mobCount = -1;
-                Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
             }
         } else if (floor % 5 == 2)
         {

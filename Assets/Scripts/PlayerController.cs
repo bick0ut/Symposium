@@ -36,10 +36,12 @@ public class PlayerController : MonoBehaviour
     public AudioSource healSound;
 
     private int weaponIndex;
+    private bool confused;
 
     // Start is called before the first frame update
     void Start()
     {
+        confused = false;
         Instantiate(energyPrefab, transform);
         map = GameObject.FindWithTag("Map");
         gui = GameObject.FindWithTag("GUI");
@@ -68,11 +70,24 @@ public class PlayerController : MonoBehaviour
             TakeDamage(enemy.GetDamage());
         }
 
+        Minion minion = collision.gameObject.GetComponent<Minion>();
+        if (minion != null)
+        {
+            Invulnerable();
+            TakeDamage(minion.GetDamage());
+        }
+
         Boss boss = collision.gameObject.GetComponent<Boss>();
         if (boss!= null)
         {
             Invulnerable();
             TakeDamage(boss.GetDamage());
+        }
+
+        Enemy5AI enemy5 = collision.gameObject.GetComponent<Enemy5AI>();
+        if (collision.gameObject.tag == "Mask" || enemy5 != null)
+        {
+            Confuse(3f);
         }
     }
 
@@ -112,6 +127,20 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         moveSpeed += change;
+    }
+
+ 
+
+    public void Confuse(float timer)
+    {
+        confused = true;
+        StartCoroutine(ReturnConfuse(timer));
+    }
+
+    IEnumerator ReturnConfuse(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        confused = false;
     }
 
     public void ResetSpeed()
@@ -330,25 +359,51 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, (moveSpeed * Time.deltaTime));
+            if (!confused)
+            {
+                transform.position += new Vector3(0, (moveSpeed * Time.deltaTime));
+            } else
+            {
+                transform.position += new Vector3(0, -(moveSpeed * Time.deltaTime));
+            }
             walking = true;
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, -(moveSpeed * Time.deltaTime));
+            if (!confused)
+            {
+                transform.position += new Vector3(0, -(moveSpeed * Time.deltaTime));
+            } else
+            {
+                transform.position += new Vector3(0, (moveSpeed * Time.deltaTime));
+            }
             walking = true;
         }
  
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position += new Vector3(-(moveSpeed * Time.deltaTime), 0);
+            if (!confused)
+            {
+                transform.position += new Vector3(-(moveSpeed * Time.deltaTime), 0);
+            } else
+            {
+                transform.position += new Vector3((moveSpeed * Time.deltaTime), 0);
+            }
+
             walking = true;
         }
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3((moveSpeed * Time.deltaTime), 0);
+            if (!confused)
+            {
+                transform.position += new Vector3((moveSpeed * Time.deltaTime), 0);
+            } else
+            {
+                transform.position += new Vector3(-(moveSpeed * Time.deltaTime), 0);
+            }
+
             walking = true;
         }
 

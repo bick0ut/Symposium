@@ -7,10 +7,12 @@ public class Bullet : MonoBehaviour
     private GameObject player;
     public float moveSpeed = 20f;
     public Rigidbody2D rb;
+    private bool reflect;
 
     // Start is called before the first frame update
     void Start()
     {
+        reflect = false;
         player = GameObject.FindWithTag("Player");
         rb.velocity = transform.right * moveSpeed;
         Invoke("Die", 1.0f);
@@ -23,28 +25,50 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Enemy enemy = collision.GetComponent<Enemy>();
-
-        if (enemy != null)
+        if (collision.tag == "Mask" && reflect == false)
         {
-            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
-            Destroy(gameObject);
+            rb.velocity = -rb.velocity;
+            reflect = true;
         }
-
-        Minion minion = collision.GetComponent<Minion>();
-
-        if (minion != null)
+        if (!reflect)
         {
-            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
-            Destroy(gameObject);
-        }
 
-        Boss boss = collision.GetComponent<Boss>();
+            Enemy enemy = collision.GetComponent<Enemy>();
 
-        if (boss!= null)
+            if (enemy != null)
+            {
+                enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                Destroy(gameObject);
+            }
+
+            Minion minion = collision.GetComponent<Minion>();
+
+            if (minion != null)
+            {
+                minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                Destroy(gameObject);
+            }
+
+            Boss boss = collision.GetComponent<Boss>();
+
+            if (boss != null)
+            {
+                boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                Destroy(gameObject);
+            }
+        } else
         {
-            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
-            Destroy(gameObject);
+            PlayerController player = collision.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+                if (!player.IsInvulnerable())
+                {
+                    player.Invulnerable();
+                    player.TakeDamage(player.GetDamage());
+                }
+                Destroy(gameObject);
+            }
         }
     }
 
