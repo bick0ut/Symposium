@@ -10,6 +10,7 @@ public class EnemyBulletSpecial : MonoBehaviour
     public float damage;
     public float change;
     public float timer;
+    public bool confuse;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +40,12 @@ public class EnemyBulletSpecial : MonoBehaviour
             {
                 player.Invulnerable();
                 player.TakeDamage(damage);
+                player.ChangeMovespeed(change, timer);
+                if (confuse)
+                {
+                    player.Confuse(3f);
+                }
             }
-            player.ChangeMovespeed(change, timer);
             Destroy(gameObject);
         }
     }

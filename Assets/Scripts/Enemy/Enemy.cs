@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour
     public float health;
 
     private bool alive = true;
+    private int bonus;
 
     private void Start()
     {
         map = GameObject.FindWithTag("Map");
         health *= (1 + (map.GetComponent<MapController>().GetFloor() / 5) );
         damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5) ) );
+        bonus = map.GetComponent<MapController>().GetFloor();
     }
 
     public void TakeDamage(float damage)
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
                 Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
             }
 
-            if (Random.Range(0, 10) == 0)
+            if (Random.Range(1, 101) + bonus > 90)
             {
                 Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
             }

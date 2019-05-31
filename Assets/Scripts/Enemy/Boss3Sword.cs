@@ -48,6 +48,7 @@ public class Boss3Sword : MonoBehaviour
             {
                 player.Invulnerable();
                 player.TakeDamage(damage);
+                player.Confuse(3);
             }
         }
 

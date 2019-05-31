@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
          if (collision.tag == "Health")
         {
             healSound.Play(0);
-            Heal(1);
+            Heal(maxHealth*.1f);
             Destroy(collision.gameObject);
         }
 
@@ -129,12 +129,15 @@ public class PlayerController : MonoBehaviour
         moveSpeed += change;
     }
 
- 
+
 
     public void Confuse(float timer)
     {
-        confused = true;
-        StartCoroutine(ReturnConfuse(timer));
+        if (!confused)
+        {
+            confused = true;
+            StartCoroutine(ReturnConfuse(timer));
+        }
     }
 
     IEnumerator ReturnConfuse(float timer)
@@ -421,7 +424,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        energy++;
+        energy += GetMaxEnergy()*0.01f;
         if (energy > GetMaxEnergy())
         {
             energy = GetMaxEnergy();

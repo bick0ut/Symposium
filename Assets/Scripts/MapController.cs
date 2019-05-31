@@ -16,6 +16,7 @@ public class MapController : MonoBehaviour
     public GameObject enemy3;
     public GameObject enemy4;
     public GameObject enemy5;
+    public GameObject enemy6;
 
     public GameObject boss1;
     public GameObject boss2;
@@ -30,7 +31,7 @@ public class MapController : MonoBehaviour
 
     private int mobCount = 0;
 
-    private int bossRoom = 3;
+    private int bossRoom = 4;
 
     void Start()
     {
@@ -104,7 +105,7 @@ public class MapController : MonoBehaviour
                     int rando = Random.Range(0, 2);
                     if (rando == 0)
                     {
-                        Instantiate(enemy5, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
                     else
                     {
@@ -135,12 +136,12 @@ public class MapController : MonoBehaviour
                     int xRange = Random.Range(-5, 10);
                     int yRange = Random.Range(-3, 4);
 
-                    int rando = Random.Range(0, 4);
+                    int rando = Random.Range(0, 5);
                     if (rando == 0)
                     {
                         Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
-                    else if (rando == 1)
+                    else if (rando == 1 || rando == 2)
                     {
                         Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
@@ -173,18 +174,14 @@ public class MapController : MonoBehaviour
                     int xRange = Random.Range(-5, 10);
                     int yRange = Random.Range(-3, 4);
 
-                    int rando = Random.Range(0, 4);
+                    int rando = Random.Range(0, 3);
                     if (rando == 0)
                     {
-                        Instantiate(enemy1, new Vector3(xRange, yRange, 0), Quaternion.identity);
-                    }
-                    else if (rando == 1)
-                    {
-                        Instantiate(enemy3, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                        Instantiate(enemy5, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(enemy4, new Vector3(xRange, yRange, 0), Quaternion.identity);
+                        Instantiate(enemy6, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
                 }
 

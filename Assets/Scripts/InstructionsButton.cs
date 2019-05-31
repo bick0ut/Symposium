@@ -25,7 +25,7 @@ public class InstructionsButton : MonoBehaviour
     {
         if (showing)
         {
-            instructions.text = "WASD to move around. Mouse to aim. 1~3 to select weapons. Left click for normal attack. Right click for special attack. Special attacks require energy, which regenerates over time. Q to display stats. Kill all enemies in the room to unlock a portal. Press E next to the portal to proceed into next room. All enemies have a chance to drop gold which can be spent after the boss room to upgrade stats.";
+            instructions.text = "WASD/Arrow keys to move around. Mouse to aim. 1~3 or mouse wheel to select weapons. Left/Right click for normal/special attack. Special attacks require energy, which regenerates by 1% per tick. Q to display stats. Press E next to the portal to proceed into next room. Gold drop rate increases as floor increases.";
         } else
         {
             instructions.text = "";

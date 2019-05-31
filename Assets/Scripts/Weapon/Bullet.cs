@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private GameObject player;
-    public float moveSpeed = 20f;
+    public float moveSpeed;
     public Rigidbody2D rb;
     private bool reflect;
 
@@ -58,6 +58,11 @@ public class Bullet : MonoBehaviour
             }
         } else
         {
+            if(collision.tag == "Shield")
+            {
+                Destroy(gameObject);
+            }
+
             PlayerController player = collision.GetComponent<PlayerController>();
 
             if (player != null)

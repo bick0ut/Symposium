@@ -140,6 +140,8 @@ MonoBehaviour:
   firePoint: {fileID: 3312143998841038349}
   laserPrefab: {fileID: 1867762683561629818, guid: fb525cf9ef19c084294722b9beaaf2ed,
     type: 3}
+  laserBlastPrefab: {fileID: 8625899756491534200, guid: 3e47f33b1a1576d46a51714f3677fde7,
+    type: 3}
 --- !u!114 &9144745777065347301
 MonoBehaviour:
   m_ObjectHideFlags: 0

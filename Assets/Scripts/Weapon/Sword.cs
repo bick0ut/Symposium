@@ -46,8 +46,7 @@ public class Sword : MonoBehaviour
 
         if (minion != null)
         {
-            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
-            Destroy(gameObject);
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*3);
         }
 
         Boss boss = collision.GetComponent<Boss>();
@@ -57,5 +56,9 @@ public class Sword : MonoBehaviour
             boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*3);
         }
 
+        if(collision.tag == "Mask")
+        {
+            Destroy(gameObject);
+        }
     }
 }

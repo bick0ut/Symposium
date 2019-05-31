@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class LaserBlast : MonoBehaviour
 {
     private GameObject player;
     // Start is called before the first frame update
@@ -17,14 +17,14 @@ public class Laser : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.2f);
+            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.1f);
         }
 
         Minion minion = collision.GetComponent<Minion>();
 
         if (minion != null)
         {
-            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.1f);
         }
 
 
@@ -45,14 +45,9 @@ public class Laser : MonoBehaviour
     private void Update()
     {
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = mouse;
 
-        float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
-        float AngleDeg = (180 / Mathf.PI) * AngleRad;
-        this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
-
-        this.transform.position = player.transform.position;
-
-        if (!Input.GetMouseButton(0)||Input.GetKeyDown(KeyCode.Alpha1)||Input.GetKeyDown(KeyCode.Alpha2)||Input.GetKeyDown(KeyCode.Alpha3))
+        if (!Input.GetMouseButton(1)||Input.GetKeyDown(KeyCode.Alpha1)||Input.GetKeyDown(KeyCode.Alpha2)||Input.GetKeyDown(KeyCode.Alpha3))
         {
             Destroy(gameObject);
         }
@@ -64,7 +59,6 @@ public class Laser : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.localScale += new Vector3(1.0f, 0, 0);
         player.GetComponent<PlayerController>().LoseEnergy(2.0f);
         if (player.GetComponent<PlayerController>().GetEnergy() == 0)
         {

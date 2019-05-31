@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy5AI : MonoBehaviour
+public class Enemy6AI : MonoBehaviour
 {
+    public Animator shoot;
+
+    public GameObject bulletPrefab;
     public Transform firePoint;
 
     private GameObject map;
     private GameObject Player;
-
-    private float moveSpeed;
-    public GameObject maskPrefab;
+    private bool cooldown;
 
     // Start is called before the first frame update
     void Start()
     {
-        var mask = Instantiate(maskPrefab, firePoint.position, firePoint.rotation);
-        mask.transform.parent = gameObject.transform;
-        moveSpeed = 0.75f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
     }
@@ -25,17 +23,29 @@ public class Enemy5AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(2, 0) * moveSpeed * Time.deltaTime);
         if (Player != null)
         {
             float AngleRad = Mathf.Atan2(Player.transform.position.y - transform.position.y, Player.transform.position.x - transform.position.x);
             float AngleDeg = (180 / Mathf.PI) * AngleRad;
             this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
         }
+
+        if (!cooldown)
+        {
+            cooldown = true;
+            shoot.Play("Enemy6Animation", 0, 0);
+            Invoke("Shoot", 0.5f);
+            Invoke("Cooldown", 2f);
+        }
     }
 
-    public void Speed()
+    void Shoot()
     {
-        moveSpeed += 1.5f;
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void Cooldown()
+    {
+        cooldown = false;
     }
 }
