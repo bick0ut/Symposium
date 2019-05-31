@@ -15,7 +15,10 @@ public class Minion : MonoBehaviour
     private void Awake()
     {
         boss = GameObject.FindWithTag("Boss");
-        Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        if (boss != null)
+        {
+            Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 
     private void Start()
