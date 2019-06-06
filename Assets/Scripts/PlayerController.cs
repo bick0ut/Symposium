@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public GameObject energyPrefab;
     public GameObject menuPrefab;
 
+    public Rigidbody2D body;
     public Animator walk;
     public SpriteRenderer sprite;
 
@@ -35,12 +36,16 @@ public class PlayerController : MonoBehaviour
     public AudioSource hitSound;
     public AudioSource healSound;
 
+    private bool charging;
+    private Vector2 goal;
+
     private int weaponIndex;
     private bool confused;
 
     // Start is called before the first frame update
     void Start()
     {
+        charging = false;
         confused = false;
         Instantiate(energyPrefab, transform);
         map = GameObject.FindWithTag("Map");
@@ -59,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (invulnerable)
+        if (invulnerable || charging)
         {
             return;
         }
@@ -112,6 +117,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
 
     public void ChangeMovespeed(float change, float timer)
     {
@@ -257,7 +263,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsInvulnerable()
     {
-        return invulnerable;
+        return invulnerable||charging;
     }
     void Vulnerable()
     {
@@ -280,6 +286,19 @@ public class PlayerController : MonoBehaviour
             this.energy = 0;
         }
     }
+
+    public void Charge(Vector2 goal)
+    {
+        charging = true;
+        body.isKinematic = true;
+        this.goal = goal;
+    }
+
+    public bool IsCharging()
+    {
+        return charging;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -289,26 +308,7 @@ public class PlayerController : MonoBehaviour
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f && weaponIndex!=2)
-        {
-            weaponIndex++;
-            gui.GetComponent<GUI>().ChangeWeapon(weaponIndex);
-            DisableWeapons();
-
-            if (weaponIndex == 0)
-            {
-                gameObject.GetComponent<Weapon1Controller>().enabled = true;
-            } else if(weaponIndex == 1)
-            {
-                gameObject.GetComponent<Weapon2Controller>().enabled = true;
-            }
-            else
-            {
-                gameObject.GetComponent<Weapon3Controller>().enabled = true;
-            }
-        }
-
-        if(Input.GetAxis("Mouse ScrollWheel") < 0f && weaponIndex!=0)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f && weaponIndex!=0)
         {
             weaponIndex--;
             gui.GetComponent<GUI>().ChangeWeapon(weaponIndex);
@@ -327,6 +327,39 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f && weaponIndex!=2)
+        {
+            weaponIndex++;
+            gui.GetComponent<GUI>().ChangeWeapon(weaponIndex);
+            DisableWeapons();
+
+            if (weaponIndex == 0)
+            {
+                gameObject.GetComponent<Weapon1Controller>().enabled = true;
+            } else if(weaponIndex == 1)
+            {
+                gameObject.GetComponent<Weapon2Controller>().enabled = true;
+            }
+            else
+            {
+                gameObject.GetComponent<Weapon3Controller>().enabled = true;
+            }
+        }
+
+        if (charging)
+        {
+            if ((Vector2)transform.position != goal && energy > 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, goal, 3 * moveSpeed * Time.deltaTime);
+                LoseEnergy(maxEnergy*0.1f);
+            }
+            else
+            {
+                charging = false;
+                body.isKinematic = false;
+            }
+            return;
+        }
 
         if (Input.GetKeyUp(KeyCode.Q))
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBlast : MonoBehaviour
+public class Charge : MonoBehaviour
 {
     private GameObject player;
     // Start is called before the first frame update
@@ -17,14 +17,14 @@ public class LaserBlast : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.1f);
+            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
         }
 
         Minion minion = collision.GetComponent<Minion>();
 
         if (minion != null)
         {
-            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.1f);
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
         }
 
 
@@ -32,7 +32,7 @@ public class LaserBlast : MonoBehaviour
 
         if (boss!= null)
         {
-            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.3f);
+            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
         }
         
         if(collision.tag == "Mask")
@@ -44,10 +44,8 @@ public class LaserBlast : MonoBehaviour
 
     private void Update()
     {
-        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = mouse;
-
-        if (!Input.GetMouseButton(1)||Input.GetKeyDown(KeyCode.Alpha1)||Input.GetKeyDown(KeyCode.Alpha2)||Input.GetKeyDown(KeyCode.Alpha3))
+        this.transform.position = player.transform.position;
+        if (player.GetComponent<PlayerController>().IsCharging() == false)
         {
             Destroy(gameObject);
         }
@@ -56,11 +54,6 @@ public class LaserBlast : MonoBehaviour
     private void FixedUpdate()
     {
         if (player == null)
-        {
-            Destroy(gameObject);
-        }
-        player.GetComponent<PlayerController>().LoseEnergy(2.0f);
-        if (player.GetComponent<PlayerController>().GetEnergy() == 0)
         {
             Destroy(gameObject);
         }

@@ -43,7 +43,7 @@ public class Enemy3AI : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(creep, firePoint.position, firePoint.rotation);
+        Instantiate(creep, firePoint.position, firePoint.rotation*Quaternion.Euler(0, 0, Random.Range(0,361)));
     }
 
     void Cooldown()
