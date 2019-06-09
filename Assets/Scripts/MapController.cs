@@ -17,6 +17,7 @@ public class MapController : MonoBehaviour
     public GameObject enemy4;
     public GameObject enemy5;
     public GameObject enemy6;
+    public GameObject enemy8;
 
     public GameObject boss1;
     public GameObject boss2;
@@ -26,7 +27,7 @@ public class MapController : MonoBehaviour
 
     public GameObject shopPrefab;
 
-    private int floor = 1;
+    private int floor = 4;
     private int room = 0;
 
     private int mobCount = 0;
@@ -183,6 +184,32 @@ public class MapController : MonoBehaviour
                     {
                         Instantiate(enemy6, new Vector3(xRange, yRange, 0), Quaternion.identity);
                     }
+                }
+
+                mobCount = spawnCount;
+            }
+            else
+            {
+                mobCount = -1;
+                Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+        }else if (floor % 5 == 4)
+        {
+            if (room == bossRoom + 1)
+            {
+                mobCount = -1;
+                SpawnPortal();
+                Instantiate(shopPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            else if (room != bossRoom)
+            {
+                int spawnCount = Random.Range(8, 13);
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    int xRange = Random.Range(-5, 10);
+                    int yRange = Random.Range(-3, 4);
+
+                    Instantiate(enemy8, new Vector3(xRange, yRange, 0), Quaternion.identity);
                 }
 
                 mobCount = spawnCount;

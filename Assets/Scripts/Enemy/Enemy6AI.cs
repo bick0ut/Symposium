@@ -33,7 +33,7 @@ public class Enemy6AI : MonoBehaviour
         if (!cooldown)
         {
             cooldown = true;
-            shoot.Play("Enemy6Animation", 0, 0);
+            shoot.Play("Enemy8Animation", 0, 0);
             Invoke("Shoot", 0.5f);
             Invoke("Cooldown", 2f);
         }
