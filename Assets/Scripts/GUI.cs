@@ -36,7 +36,11 @@ public class GUI : MonoBehaviour
         WeaponList.Add(weapon3);
     }
 
-    public void StatsDisplay(float hp, float energy, float damage) {
+    public bool IsDisplaying(){
+        return !statsDisplay;
+    }
+
+    public void StatsDisplay(float hp, float energy, float damage, int kills) {
         statsDisplay = !statsDisplay;
         if (statsDisplay)
         {
@@ -44,7 +48,7 @@ public class GUI : MonoBehaviour
             statsBg.SetActive(false);
         } else
         {
-            stats.text = "Max Health: " + hp + "\nMax Energy: " + energy + "%\nDamage: " + (int)(damage*100) + "%";
+            stats.text = "Max Health: " + hp + "\nMax Energy: " + energy + "%\nDamage: " + (int)(damage*100) + "%\nKills: " + kills;
             statsBg.SetActive(true);
         }
     }

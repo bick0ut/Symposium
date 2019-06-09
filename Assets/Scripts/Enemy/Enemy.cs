@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject healthPrefab;
-    private GameObject map;
+    private MapController map;
+    private PlayerController pc;
+    private GUI gui;
 
     public GameObject goldPrefab;
 
@@ -17,7 +19,9 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        map = GameObject.FindWithTag("Map");
+        map = GameObject.FindWithTag("Map").GetComponent<MapController>();
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        gui = GameObject.FindWithTag("GUI").GetComponent<GUI>();
         health *= (1 + (map.GetComponent<MapController>().GetFloor() / 5) );
         damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5) ) );
         bonus = map.GetComponent<MapController>().GetFloor();
@@ -68,7 +72,12 @@ public class Enemy : MonoBehaviour
                 Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
             }
 
-            map.GetComponent<MapController>().EnemyKilled();
+            map.EnemyKilled();
+            pc.AddKill();
+            if (gui.IsDisplaying()){
+                gui.StatsDisplay(pc.GetMaxHealth(), pc.GetMaxEnergy(), pc.GetDamage(), pc.GetKills());
+                gui.StatsDisplay(pc.GetMaxHealth(), pc.GetMaxEnergy(), pc.GetDamage(), pc.GetKills());
+            }
             Destroy(gameObject);
         }
     }

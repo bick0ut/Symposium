@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     private int weaponIndex;
     private bool confused;
 
+    private int kills = 0;
+    private bool displaying;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -188,12 +191,20 @@ public class PlayerController : MonoBehaviour
         return this.damage;
     }
 
+    public void AddKill()
+    {
+        kills++;
+    }
+    public int GetKills()
+    {
+        return this.kills;
+    }
     public void ChangeDamage(float change)
     {
         this.damage += change;
         dUpgrade++;
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
     }
 
     public int DUpgrade()
@@ -205,8 +216,8 @@ public class PlayerController : MonoBehaviour
     {
         this.maxEnergy += change;
         eUpgrade++;
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
     }
 
     public int EUpgrade()
@@ -219,8 +230,8 @@ public class PlayerController : MonoBehaviour
         this.maxHealth += change;
         Heal(change);
         hUpgrade++;
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
-        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
+        gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
     }
 
     public int HUpgrade()
@@ -350,7 +361,7 @@ public class PlayerController : MonoBehaviour
         {
             if ((Vector2)transform.position != goal && energy > 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, goal, 3 * moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, goal, 4 * moveSpeed * Time.deltaTime);
                 LoseEnergy(maxEnergy*0.1f);
             }
             else
@@ -363,7 +374,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage());
+            gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage(), GetKills());
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
