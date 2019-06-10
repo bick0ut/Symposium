@@ -81,7 +81,6 @@ public class Boss: MonoBehaviour
             {
                 Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
                 Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
-                Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
             }
             alive = false;
             gui.GetComponent<GUI>().HideBoss();
