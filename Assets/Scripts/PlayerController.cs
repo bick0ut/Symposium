@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private bool walking;
     private float moveSpeed;
-    private float health = 10;
-    private float maxHealth = 10;
+    private float health = 15;
+    private float maxHealth = 15;
     private bool invulnerable = false;
 
     private int dUpgrade = 0;

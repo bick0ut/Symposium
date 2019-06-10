@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         gui = GameObject.FindWithTag("GUI").GetComponent<GUI>();
         health *= (1 + (map.GetComponent<MapController>().GetFloor() / 5) );
-        damage *= (1 + (int)(0.5 * (map.GetComponent<MapController>().GetFloor() / 5) ) );
+        damage *= (1 + (0.5f * (map.GetComponent<MapController>().GetFloor() / 5) ) );
         bonus = map.GetComponent<MapController>().GetFloor();
     }
 

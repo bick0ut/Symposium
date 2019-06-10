@@ -42,7 +42,7 @@ public class Boss4AI : MonoBehaviour
         jcooldown = true;
         Invoke("JCooldown", Random.Range(3f, 7f));
         lcooldown = true;
-        Invoke("LCooldown", 5f);
+        Invoke("LCooldown", 3f);
         moveSpeed = 1.25f;
         map = GameObject.FindWithTag("Map");
         Player = map.GetComponent<MapController>().GetPlayer();
@@ -89,26 +89,29 @@ public class Boss4AI : MonoBehaviour
             Invoke("JCooldown", 4f);
         }
     }
-    IEnumerator LaserTimer(float y)
+    IEnumerator LaserTimer(float y, float i)
     {
-        yield return new WaitForSeconds(2f+(y/5f));
+        yield return new WaitForSeconds(i);
         Laser(y);
     }
 
     void LaserAttack()
     {
         lalt = !lalt;
+        float i = 0;
         if (lalt)
         {
-            for (float i = 10; i <= -6; i -= 0.5f)
+            for (float y = 5; y >= -2; y--)
             {
-                StartCoroutine(LaserTimer(i));
+                StartCoroutine(LaserTimer(y, i));
+                i+= 0.25f;
             }
         } else
         {
-            for (float i = -10; i <= 6; i += 0.5f)
+            for (float y = -3; y <= 3; y++)
             {
-                StartCoroutine(LaserTimer(i));
+                StartCoroutine(LaserTimer(y, i));
+                i+=0.25f;
             }
         }
     }

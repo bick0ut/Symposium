@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 2407139318948074631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.09, y: 0.74, z: 0}
-  m_LocalScale: {x: 7.5, y: 7.5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 7128063411316170894}
   m_Father: {fileID: 0}
@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldPrefab: {fileID: 7563190864276121925, guid: 14ef6c2db18c05d409149e88f5b17cc5,
     type: 3}
+  healthPrefab: {fileID: 4772162956693705488, guid: f14eade7676f6294d961e0b3e70673eb,
+    type: 3}
   damage: 2
   health: 300
   maxHealth: 300
@@ -222,7 +224,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.75873566
+  MinDistance: 0.4954052
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

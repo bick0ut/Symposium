@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldPrefab: {fileID: 7563190864276121925, guid: 14ef6c2db18c05d409149e88f5b17cc5,
     type: 3}
+  healthPrefab: {fileID: 4772162956693705488, guid: f14eade7676f6294d961e0b3e70673eb,
+    type: 3}
   damage: 2
   health: 200
   maxHealth: 200

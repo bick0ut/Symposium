@@ -28,8 +28,8 @@ public class MapController : MonoBehaviour
 
     public GameObject shopPrefab;
 
-    private int floor = 4;
-    private int room = 3;
+    private int floor = 1;
+    private int room = 0;
 
     private int mobCount = 0;
 
@@ -88,7 +88,7 @@ public class MapController : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        if (floor % 5 == 1)
+        if (floor % 4 == 1)
         {
             if (room == bossRoom + 1)
             {
@@ -122,7 +122,7 @@ public class MapController : MonoBehaviour
                 mobCount = -1;
                 Instantiate(boss1, new Vector3(0, 0, 0), Quaternion.identity);
             }
-        } else if (floor % 5 == 2)
+        } else if (floor % 4 == 2)
         {
             if (room == bossRoom + 1)
             {
@@ -160,7 +160,7 @@ public class MapController : MonoBehaviour
                 mobCount = -1;
                 Instantiate(boss2, new Vector3(0, 0, 0), Quaternion.identity);
             }
-        }else if (floor % 5 == 3)
+        }else if (floor % 4 == 3)
         {
             if (room == bossRoom + 1)
             {
@@ -194,7 +194,7 @@ public class MapController : MonoBehaviour
                 mobCount = -1;
                 Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
             }
-        }else if (floor % 5 == 4)
+        }else if (floor % 4 == 0)
         {
             if (room == bossRoom + 1)
             {
