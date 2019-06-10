@@ -22,13 +22,14 @@ public class MapController : MonoBehaviour
     public GameObject boss1;
     public GameObject boss2;
     public GameObject boss3;
+    public GameObject boss4;
 
     public GameObject GUI;
 
     public GameObject shopPrefab;
 
-    private int floor = 1;
-    private int room = 0;
+    private int floor = 4;
+    private int room = 3;
 
     private int mobCount = 0;
 
@@ -217,7 +218,7 @@ public class MapController : MonoBehaviour
             else
             {
                 mobCount = -1;
-                Instantiate(boss3, new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(boss4, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
 

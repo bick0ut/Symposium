@@ -17,14 +17,14 @@ public class Laser : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.2f);
+            enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.25f);
         }
 
         Minion minion = collision.GetComponent<Minion>();
 
         if (minion != null)
         {
-            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+            minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.5f);
         }
 
 
@@ -32,7 +32,7 @@ public class Laser : MonoBehaviour
 
         if (boss!= null)
         {
-            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.3f);
+            boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*0.4f);
         }
         
         if(collision.tag == "Mask")

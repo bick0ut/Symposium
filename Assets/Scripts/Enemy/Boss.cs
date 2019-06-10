@@ -44,6 +44,14 @@ public class Boss: MonoBehaviour
             boss2.Explode();
         }
 
+
+        Boss4AI boss4 = gameObject.GetComponent<Boss4AI>();
+
+        if (boss4 != null)
+        {
+            boss4.Explode();
+        }
+
         health -= damage;
 
         gui.GetComponent<GUI>().UpdateBossHP(health, maxHealth);
