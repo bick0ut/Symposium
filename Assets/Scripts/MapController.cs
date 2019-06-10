@@ -33,7 +33,7 @@ public class MapController : MonoBehaviour
 
     private int mobCount = 0;
 
-    private int bossRoom = 4;
+    private int bossRoom = 5;
 
     void Start()
     {
@@ -64,12 +64,12 @@ public class MapController : MonoBehaviour
 
     public void NextRoom()
     {
-        int floornum = GetFloor() % 4 + 1;
         this.room++;
         if (room > bossRoom+1)
         {
             NextFloor();
         }
+        int floornum = GetFloor() % 4;
         SceneManager.LoadScene("room" + floornum);
         Player.transform.position = new Vector3(-9, 0, 0);
         Invoke("SpawnEnemies", 0.1f);
@@ -96,7 +96,7 @@ public class MapController : MonoBehaviour
             }
             else if (room != bossRoom)
             {
-                int spawnCount = Random.Range(8, 13);
+                int spawnCount = Random.Range(10, 13);
                 for (int i = 0; i < spawnCount; i++)
                 {
                     int xRange = Random.Range(-5, 10);
@@ -130,7 +130,7 @@ public class MapController : MonoBehaviour
             }
             else if (room != bossRoom)
             {
-                int spawnCount = Random.Range(8, 13);
+                int spawnCount = Random.Range(10, 13);
                 for (int i = 0; i < spawnCount; i++)
                 {
                     int xRange = Random.Range(-5, 10);
@@ -168,7 +168,7 @@ public class MapController : MonoBehaviour
             }
             else if (room != bossRoom)
             {
-                int spawnCount = Random.Range(8, 13);
+                int spawnCount = Random.Range(10, 13);
                 for (int i = 0; i < spawnCount; i++)
                 {
                     int xRange = Random.Range(-5, 10);
@@ -202,7 +202,7 @@ public class MapController : MonoBehaviour
             }
             else if (room != bossRoom)
             {
-                int spawnCount = Random.Range(8, 13);
+                int spawnCount = Random.Range(10, 13);
                 for (int i = 0; i < spawnCount; i++)
                 {
                     int xRange = Random.Range(-5, 10);
