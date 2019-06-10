@@ -64,15 +64,13 @@ public class MapController : MonoBehaviour
 
     public void NextRoom()
     {
-        int startingScene = Random.Range(1, 3);
-
-        SceneManager.LoadScene("room" + startingScene);
+        int floornum = GetFloor() % 4 + 1;
         this.room++;
         if (room > bossRoom+1)
         {
             NextFloor();
         }
-
+        SceneManager.LoadScene("room" + floornum);
         Player.transform.position = new Vector3(-9, 0, 0);
         Invoke("SpawnEnemies", 0.1f);
         GUI.GetComponent<GUI>().UpdateRoom(room);
