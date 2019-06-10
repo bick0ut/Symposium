@@ -27,7 +27,7 @@ public class MapController : MonoBehaviour
 
     public GameObject shopPrefab;
 
-    private int floor = 4;
+    private int floor = 1;
     private int room = 0;
 
     private int mobCount = 0;
