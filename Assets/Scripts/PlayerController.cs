@@ -359,19 +359,8 @@ public class PlayerController : MonoBehaviour
 
         if (charging)
         {
-            if ((Vector2)transform.position != goal && energy > 0)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, goal, 4 * moveSpeed * Time.deltaTime);
-                LoseEnergy(maxEnergy*0.1f);
-            }
-            else
-            {
-                charging = false;
-                body.isKinematic = false;
-            }
             return;
         }
-
         if (Input.GetKeyUp(KeyCode.Q))
         {
             gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(),GetMaxEnergy(),GetDamage(), GetKills());
@@ -468,6 +457,21 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (charging)
+        {
+            if ((Vector2)transform.position != goal && energy > 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, goal, 4 * moveSpeed * Time.deltaTime);
+                LoseEnergy(maxEnergy * 0.1f);
+            }
+            else
+            {
+                charging = false;
+                body.isKinematic = false;
+            }
+            return;
+        }
+
         energy += GetMaxEnergy()*0.01f;
         if (energy > GetMaxEnergy())
         {
