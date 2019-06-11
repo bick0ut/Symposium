@@ -12,7 +12,7 @@ public class Weapon3Controller : MonoBehaviour
     private int tick;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (tick > 20)
         {
