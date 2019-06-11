@@ -28,7 +28,10 @@ public class Weapon3Controller : MonoBehaviour
             tick = 0;
             cooldown = true;
         }
+    }
 
+    void Update()
+    {
         if (Input.GetMouseButtonDown(1))
         {
             Defend();
