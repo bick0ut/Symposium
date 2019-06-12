@@ -77,12 +77,12 @@ public class Boss: MonoBehaviour
     {
         if (alive)
         {
+            alive = false;
             for (int i = 0; i < map.GetComponent<MapController>().GetFloor(); i++)
             {
                 Instantiate(goldPrefab, gameObject.transform.position, Quaternion.identity);
-                Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
             }
-            alive = false;
+            Instantiate(healthPrefab, gameObject.transform.position, Quaternion.identity);
             gui.GetComponent<GUI>().HideBoss();
             map.GetComponent<MapController>().SpawnPortal();
             Destroy(gameObject);
