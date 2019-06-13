@@ -15,22 +15,16 @@ public class HealthButton : MonoBehaviour
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         button.onClick.AddListener(ClickStart);
         cost = 1 + 2*pc.HUpgrade();
-        text.text = "+1 Max Health\nCost: " + cost;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        text.text = "+2 Max Health\nCost: " + cost;
     }
 
     private void ClickStart()
     {
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
-            pc.ChangeMaxHealth(1);
+            pc.ChangeMaxHealth(2);
             cost += 2;
-            text.text = "+1 Max Health\nCost: " + cost;
+            text.text = "+2 Max Health\nCost: " + cost;
         }
     }
 }

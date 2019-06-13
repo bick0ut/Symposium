@@ -261,6 +261,11 @@ public class PlayerController : MonoBehaviour
         gui.GetComponent<GUI>().UpdateHP(health, maxHealth);
         if (health <= 0)
         {
+            if (gui.GetComponent<GUI>().IsDisplaying())
+            {
+                gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
+            }
+            gui.GetComponent<GUI>().StatsDisplay(GetMaxHealth(), GetMaxEnergy(), GetDamage(), GetKills());
             Instantiate(menuPrefab);
             Destroy(gameObject);
         }

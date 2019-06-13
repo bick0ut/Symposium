@@ -15,7 +15,7 @@ public class DamageButton : MonoBehaviour
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         button.onClick.AddListener(ClickStart);
         cost = 2 + 2*pc.DUpgrade();
-        text.text = "+20% Damage\nCost: " + cost;
+        text.text = "+25% Damage\nCost: " + cost;
     }
 
     // Update is called once per frame
@@ -28,9 +28,9 @@ public class DamageButton : MonoBehaviour
     {
         if (pc.GetGold() >= cost) {
             pc.ChangeGold(-cost);
-            pc.ChangeDamage(0.2f);
+            pc.ChangeDamage(0.25f);
             cost += 2;
-            text.text = "+20% Damage\nCost: " + cost;
+            text.text = "+25% Damage\nCost: " + cost;
         }
     }
 }
