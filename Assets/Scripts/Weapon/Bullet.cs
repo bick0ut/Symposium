@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                enemy.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*2);
                 Destroy(gameObject);
             }
 
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
 
             if (minion != null)
             {
-                minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                minion.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*2);
                 Destroy(gameObject);
             }
 
@@ -53,7 +53,7 @@ public class Bullet : MonoBehaviour
 
             if (boss != null)
             {
-                boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage());
+                boss.TakeDamage(player.GetComponent<PlayerController>().GetDamage()*2);
                 Destroy(gameObject);
             }
         } else
